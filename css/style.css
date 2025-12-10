@@ -122,13 +122,14 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 0;
+    padding: 20px 0;
 }
 
 .logo img {
     height: 220px;
     width: auto;
     transition: transform 0.3s ease;
+    margin-top: 15px;
 }
 
 .logo:hover img {
