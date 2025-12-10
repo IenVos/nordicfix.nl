@@ -197,14 +197,17 @@ body {
     border: none;
     cursor: pointer;
     gap: 5px;
-    padding: 8px;
+    padding: 10px;
+    z-index: 10000;
+    position: relative;
 }
 
 .mobile-menu-toggle span {
-    width: 25px;
+    width: 30px;
     height: 3px;
     background: var(--color-white);
     border-radius: 2px;
+    display: block;
 }
 
 /* ====================================
@@ -566,7 +569,7 @@ body {
     }
 
     .mobile-menu-toggle {
-        display: flex;
+        display: flex !important;
     }
 
     .logo img {
@@ -579,11 +582,7 @@ body {
     }
 
     .nav-links {
-        display: none;
-    }
-
-    .nav-links.active {
-        display: flex;
+        display: none !important;
         position: fixed;
         top: 0;
         left: 0;
@@ -597,10 +596,21 @@ body {
         padding: 40px;
         gap: 40px;
         z-index: 9999;
+        list-style: none;
+    }
+
+    .nav-links.active {
+        display: flex !important;
+    }
+
+    .nav-links li {
+        list-style: none;
     }
 
     .nav-links a {
         font-size: 24px;
+        color: var(--color-white);
+        text-decoration: none;
     }
 
     .hero {
