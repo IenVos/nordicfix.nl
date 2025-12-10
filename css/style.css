@@ -108,32 +108,33 @@ body {
    Navigation
    ==================================== */
 .main-nav {
-    position: fixed;
+    position: relative;
     top: 0;
     width: 100%;
     background: transparent;
     backdrop-filter: blur(20px);
     border-bottom: none;
     z-index: 1000;
-    transition: all 0.3s ease;
 }
 
 .nav-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 0;
+    padding: 20px 0 30px;
 }
 
 .logo img {
-    height: 110px;
+    height: 120px;
     width: auto;
     transition: transform 0.3s ease;
+    margin-top: 20px;
 }
 
 @media (max-width: 768px) {
     .logo img {
-        height: 60px;
+        height: 70px;
+        margin-top: 10px;
     }
 }
 
@@ -228,7 +229,7 @@ body {
     min-height: 100vh;
     display: flex;
     align-items: center;
-    padding-top: 90px;
+    padding-top: 40px;
     position: relative;
 }
 
@@ -641,7 +642,7 @@ body {
     }
 
     .hero {
-        padding-top: 120px;
+        padding-top: 20px;
     }
 
     /* Mobile menu overlay */
