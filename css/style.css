@@ -392,7 +392,9 @@ section {
 .reviews-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 32px 24px;
+    gap: 40px 24px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .review-card {
@@ -405,16 +407,31 @@ section {
     transition: all 0.3s ease;
 }
 
+/* Spraakwolkje pijltje met oranje randje */
 .review-card:before {
     content: '';
     position: absolute;
-    bottom: -10px;
+    bottom: -12px;
     left: 40px;
+    width: 0;
+    height: 0;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-top: 12px solid rgba(30, 58, 79, 0.5);
+    filter: drop-shadow(0 2px 0 rgba(243, 156, 90, 0.4));
+}
+
+/* Oranje randje op pijltje */
+.review-card:after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 42px;
     width: 0;
     height: 0;
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
-    border-top: 10px solid rgba(30, 58, 79, 0.5);
+    border-top: 10px solid rgba(243, 156, 90, 0.4);
 }
 
 .review-card:hover {
