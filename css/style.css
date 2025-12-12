@@ -543,6 +543,7 @@ section {
 .usp-item p {
     color: var(--color-text-muted);
     line-height: 1.6;
+   margin-top: 0; /* geen extra ruimte boven tekst */
 }
 /* ====================================
    CTA Section
