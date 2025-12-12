@@ -493,7 +493,7 @@ section {
     font-size: clamp(32px, 5vw, 48px);
     font-weight: 700;
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     background: linear-gradient(135deg, var(--color-white), var(--color-secondary));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
