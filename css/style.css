@@ -441,7 +441,7 @@ section {
 
 .review-card:hover {
     transform: translateY(-4px);
-    border-color: rgba(110, 181, 209, 0.4);
+    border-color: rgba(243, 156, 90, 0.6);
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
 }
 
@@ -514,7 +514,7 @@ section {
 .usp-item {
     text-align: center;
     padding: 32px;
-    background: rgba(30, 58, 79, 0.3);
+    background: rgba(30, 58, 79, 0.6);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(110, 181, 209, 0.15);
     border-radius: 16px;
