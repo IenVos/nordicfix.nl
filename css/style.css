@@ -284,12 +284,36 @@ section {
    ==================================== */
 .services-preview {
     padding: var(--section-padding) 0;
+    position: relative;
+}
+
+.section-title {
+    font-size: clamp(36px, 5vw, 56px);
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 80px;
+    background: linear-gradient(135deg, var(--color-white), var(--color-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .services-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+    gap: 32px;
+}
+
+@media (max-width: 1024px) {
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 .service-card {
@@ -297,7 +321,7 @@ section {
     backdrop-filter: blur(10px);
     border: 1px solid rgba(110, 181, 209, 0.2);
     border-radius: 16px;
-    padding: 32px;
+    padding: 40px;
     transition: all 0.4s ease;
     position: relative;
     overflow: hidden;
@@ -327,27 +351,26 @@ section {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
+    color: var(--color-white);
 }
 
 .service-icon svg {
     width: 32px;
     height: 32px;
-    color: var(--color-white);
 }
 
 .service-card h3 {
-    font-size: 22px;
+    font-size: 24px;
     font-weight: 700;
-    margin-bottom: 120px;
+    margin-bottom: 16px;
     color: var(--color-white);
 }
 
 .service-card p {
-    color: var(--color-text-muted);
-    margin-bottom: 20px;
-    font-size: 15px;
-    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 24px;
+    line-height: 1.7;
 }
 
 .service-link {
@@ -364,6 +387,9 @@ section {
     gap: 12px;
 }
 
+/* ====================================
+   Service Card Highlight
+   ==================================== */
 .service-card-highlight {
     background: linear-gradient(135deg, rgba(243, 156, 90, 0.15), rgba(110, 181, 209, 0.15));
     border-color: rgba(243, 156, 90, 0.4);
