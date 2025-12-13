@@ -1,0 +1,344 @@
+
+/* ====================================
+   Service Pages Specific Styles
+   ==================================== */
+
+.breadcrumb {
+    padding-top: 120px;
+    padding-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.breadcrumb a {
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.breadcrumb a:hover {
+    color: var(--color-accent);
+}
+
+.breadcrumb span:last-child {
+    color: var(--color-white);
+}
+
+/* ====================================
+   Service Hero
+   ==================================== */
+.service-hero {
+    padding: 60px 0 80px;
+}
+
+.service-title {
+    font-size: clamp(40px, 6vw, 72px);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    background: linear-gradient(135deg, var(--color-white), var(--color-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.service-subtitle {
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.8);
+    max-width: 700px;
+    line-height: 1.7;
+}
+
+/* ====================================
+   Service Content Grid
+   ==================================== */
+.service-content {
+    padding: 0 0 var(--section-padding);
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: 60px;
+    align-items: start;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
+.content-block {
+    background: rgba(30, 58, 79, 0.3);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(110, 181, 209, 0.2);
+    border-radius: 16px;
+    padding: 48px;
+}
+
+.content-block h2 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 24px;
+    color: var(--color-secondary);
+}
+
+.content-block p {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.content-block p:last-child {
+    margin-bottom: 0;
+}
+
+/* ====================================
+   Features List
+   ==================================== */
+.features-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.features-list li {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.features-list svg {
+    width: 24px;
+    height: 24px;
+    color: var(--color-accent);
+    flex-shrink: 0;
+    margin-top: 4px;
+}
+
+.features-list h4 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--color-white);
+}
+
+.features-list p {
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* ====================================
+   Process Steps
+   ==================================== */
+.process-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.step {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+}
+
+.step-number {
+    font-size: 48px;
+    font-weight: 800;
+    font-family: var(--font-mono);
+    background: linear-gradient(135deg, var(--color-secondary), var(--color-accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+.step-content h3 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--color-white);
+}
+
+.step-content p {
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* ====================================
+   Ideal Clients
+   ==================================== */
+.ideal-clients {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 24px;
+    margin-top: 32px;
+}
+
+.client-type {
+    background: rgba(110, 181, 209, 0.1);
+    border: 1px solid rgba(110, 181, 209, 0.2);
+    border-radius: 12px;
+    padding: 24px;
+}
+
+.client-type h4 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--color-secondary);
+}
+
+.client-type p {
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* ====================================
+   Sidebar
+   ==================================== */
+.sidebar {
+    position: sticky;
+    top: 110px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.sidebar-card {
+    background: rgba(30, 58, 79, 0.4);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(110, 181, 209, 0.2);
+    border-radius: 16px;
+    padding: 32px;
+}
+
+.sidebar-card h3 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: var(--color-white);
+}
+
+.sidebar-card p {
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.7;
+    margin-bottom: 24px;
+}
+
+.cta-card {
+    background: linear-gradient(135deg, rgba(110, 181, 209, 0.2), rgba(243, 156, 90, 0.2));
+    border-color: rgba(243, 156, 90, 0.3);
+}
+
+.cta-card .btn {
+    width: 100%;
+    text-align: center;
+}
+
+/* ====================================
+   Related Services
+   ==================================== */
+.related-services {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.related-services a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    padding: 12px 16px;
+    border-radius: 8px;
+    background: rgba(110, 181, 209, 0.05);
+    border: 1px solid rgba(110, 181, 209, 0.1);
+    transition: all 0.3s ease;
+    display: block;
+}
+
+.related-services a:hover {
+    background: rgba(110, 181, 209, 0.15);
+    border-color: rgba(110, 181, 209, 0.3);
+    color: var(--color-accent);
+    transform: translateX(4px);
+}
+
+/* ====================================
+   Info Card
+   ==================================== */
+.info-card .info-item {
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(110, 181, 209, 0.1);
+}
+
+.info-card .info-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.info-card .info-item:first-child {
+    padding-top: 0;
+}
+
+.info-card strong {
+    display: block;
+    color: var(--color-secondary);
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.info-card p {
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* ====================================
+   Responsive Design for Service Pages
+   ==================================== */
+@media (max-width: 1024px) {
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        position: static;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 24px;
+    }
+}
+
+@media (max-width: 768px) {
+    .content-block {
+        padding: 32px 24px;
+    }
+
+    .step {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .step-number {
+        font-size: 36px;
+    }
+
+    .ideal-clients {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        grid-template-columns: 1fr;
+    }
+}
