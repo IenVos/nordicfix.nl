@@ -19,7 +19,7 @@
     transition: color 0.3s ease;
 }
 
-.breadcrumb a:hover {
+.breadcrumb a:hover!important;{
     color: rgba(110, 181, 209, 1); /* volle aurora-blue */
 }
 
