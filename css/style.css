@@ -626,7 +626,7 @@ section {
     width: auto;
     position: relative;
     left: 0px;  /* schuift 10px naar rechts */
-    margin: 0 auto 16px auto; /* centreert horizontaal met ondermarge */
+    margin: 0 auto 10px auto; /* centreert horizontaal met ondermarge */
     display: block;
 }
 
