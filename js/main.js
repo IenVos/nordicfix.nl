@@ -1,30 +1,24 @@
-// ====================================
-// Mobile Menu Toggle
-// ====================================
+// Mobile menu toggle
 document.addEventListener('DOMContentLoaded', function() {
-    const menuToggle = document.querySelector('.mobile-menu-toggle');
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
     const navLinks = document.querySelector('.nav-links');
     
-    if (menuToggle) {
-        menuToggle.addEventListener('click', function() {
+    if (mobileMenuToggle) {
+        mobileMenuToggle.addEventListener('click', function() {
             navLinks.classList.toggle('active');
-            this.classList.toggle('active');
+            mobileMenuToggle.classList.toggle('active');
+        });
+        
+        // Sluit menu bij klik op link
+        const links = navLinks.querySelectorAll('a');
+        links.forEach(link => {
+            link.addEventListener('click', function() {
+                navLinks.classList.remove('active');
+                mobileMenuToggle.classList.remove('active');
+            });
         });
     }
-    
-    // Close mobile menu when clicking on a link
-    const navLinkItems = document.querySelectorAll('.nav-links a');
-    navLinkItems.forEach(link => {
-        link.addEventListener('click', function() {
-            navLinks.classList.remove('active');
-            if (menuToggle) {
-                menuToggle.classList.remove('active');
-            }
-        });
-    });
 });
-
-// Navigatie scrolt nu mee, geen scroll effect nodig
 
 // ====================================
 // Smooth Scroll for Anchor Links
