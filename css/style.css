@@ -1062,3 +1062,72 @@ section {
         text-align: center;
     }
 }
+/* ====================================
+   Extra Services - Compact Cards
+   ==================================== */
+.extra-services {
+    padding: var(--section-padding) 0;
+    background: rgba(15, 30, 41, 0.2);
+}
+
+.extra-services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.extra-service-card {
+    background: rgba(30, 58, 79, 0.3);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(110, 181, 209, 0.2);
+    border-radius: 12px;
+    padding: 28px 24px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.extra-service-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(110, 181, 209, 0.4);
+}
+
+.extra-service-card h3 {
+    color: var(--color-white);
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.extra-service-card p {
+    color: var(--color-text-muted);
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+
+.btn-compact {
+    display: inline-block;
+    padding: 10px 24px;
+    background: transparent;
+    color: var(--color-secondary);
+    border: 2px solid var(--color-secondary);
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn-compact:hover {
+    background: rgba(110, 181, 209, 0.1);
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+}
+
+/* Responsive voor extra services */
+@media (max-width: 768px) {
+    .extra-services-grid {
+        grid-template-columns: 1fr;
+    }
+}
