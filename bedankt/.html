@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bedankt! - NordicFix</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        .thank-you-page {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px 20px;
+        }
+        .thank-you-content {
+            max-width: 600px;
+        }
+        .thank-you-content h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #00d4ff;
+        }
+        .thank-you-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        .back-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #00d4ff 0%, #0066ff 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: transform 0.3s ease;
+        }
+        .back-button:hover {
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body>
+    <div class="video-background">
+        <video autoplay muted loop playsinline preload="metadata">
+            <source src="/videos/noorderlicht.mp4" type="video/mp4" />
+        </video>
+    </div>
+
+    <div class="thank-you-page">
+        <div class="thank-you-content">
+            <h1>🎉 Bedankt!</h1>
+            <p>Je bericht is succesvol verzonden. Ik neem binnen 24 uur contact met je op via <strong>info@nordicfix.nl</strong></p>
+            <p>Check ook je spam folder, voor het geval mijn antwoord daar terechtkomt.</p>
+            <a href="/" class="back-button">Terug naar Home</a>
+        </div>
+    </div>
+</body>
+</html>
