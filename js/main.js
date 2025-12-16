@@ -87,3 +87,59 @@ function setActiveNavLink() {
 }
 
 document.addEventListener('DOMContentLoaded', setActiveNavLink);
+
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const form = this;
+    const submitBtn = form.querySelector('.submit-btn');
+    const originalBtnText = submitBtn.textContent;
+    
+    // Toon loading state
+    submitBtn.textContent = 'Bezig met verzenden...';
+    submitBtn.disabled = true;
+    
+    // Verwijder eventuele oude berichten
+    const oldMessage = form.querySelector('.form-message');
+    if (oldMessage) oldMessage.remove();
+    
+    // Formulierdata verzamelen
+    const formData = new FormData(form);
+    
+    // Verstuur via fetch
+    fetch('/send-email.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        // Toon bericht
+        const messageDiv = document.createElement('div');
+        messageDiv.className = 'form-message ' + (data.success ? 'success' : 'error');
+        messageDiv.textContent = data.message;
+        form.insertBefore(messageDiv, submitBtn);
+        
+        // Reset formulier bij succes
+        if (data.success) {
+            form.reset();
+        }
+        
+        // Herstel button
+        submitBtn.textContent = originalBtnText;
+        submitBtn.disabled = false;
+        
+        // Scroll naar bericht
+        messageDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    })
+    .catch(error => {
+        // Toon foutmelding
+        const messageDiv = document.createElement('div');
+        messageDiv.className = 'form-message error';
+        messageDiv.textContent = 'Er is een fout opgetreden. Probeer het later opnieuw.';
+        form.insertBefore(messageDiv, submitBtn);
+        
+        // Herstel button
+        submitBtn.textContent = originalBtnText;
+        submitBtn.disabled = false;
+    });
+});
