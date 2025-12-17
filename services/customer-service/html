@@ -1,1 +1,278 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Professionele Customer Service voor jouw online business. Ik neem de klantenservice over zodat jij je kunt focussen op groei.">
+    <meta name="keywords" content="customer service, klantenservice, online support, digitale diensten, NordicFix">
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Customer Service",
+        "description": "Professionele klantenservice voor online businesses",
+        "provider": {
+            "@type": "Organization",
+            "name": "NordicFix",
+            "url": "https://nordicfix.nl"
+        },
+        "areaServed": "NL",
+        "availableLanguage": ["nl", "en"]
+    }
+    </script>
+    
+    <title>Customer Service - NordicFix</title>
+    <link rel="icon" type="image/png" href="../images/nordicfix_favicon.png">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Video Background -->
+    <div class="video-background">
+        <video autoplay muted loop playsinline preload="metadata">
+            <source src="../videos/noorderlicht.mp4" type="video/mp4">
+        </video>
+    </div>
 
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="container">
+            <div class="nav-content">
+                <ul class="nav-links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../services.html" class="active">Services</a></li>
+                    <li><a href="../blog.html">Blog</a></li>
+                    <li><a href="../over.html">Over</a></li>
+                    <li><a href="../contact.html" class="cta-button">Contact</a></li>
+                </ul>
+                <button class="mobile-menu-toggle" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Service Hero -->
+    <section class="service-hero">
+        <div class="container">
+            <nav class="breadcrumb">
+                <a href="../index.html">Home</a>
+                <span>/</span>
+                <a href="../services.html">Services</a>
+                <span>/</span>
+                <span>Customer Service</span>
+            </nav>
+            
+            <h1>Customer Service</h1>
+            <p class="service-subtitle">
+                Ik neem jouw klantenservice over, van communicatie en toegangsbeheer tot betalingscontrole. Jij focust op groei, ik op tevreden klanten.
+            </p>
+        </div>
+    </section>
+
+    <!-- Service Content -->
+    <section class="service-content">
+        <div class="container">
+            <div class="content-wrapper">
+                
+                <!-- Main Content -->
+                <article class="content-main">
+                    <div class="content-block">
+                        <h2>Wat ik voor je doe</h2>
+                        <p>
+                            Als online ondernemer weet je dat goede klantenservice essentieel is, maar ook enorm veel tijd kost. Ik neem dit volledig uit handen, zodat jij je kunt focussen op wat jij het beste doet: je bedrijf laten groeien.
+                        </p>
+                        <p>
+                            Met jarenlange ervaring in customer service voor Nederlandse en Zweedse bedrijven, ben ik gewend aan verschillende systemen, tools en werkwijzen. Ik spring snel in, denk proactief mee, en zorg dat jouw klanten altijd vriendelijk en professioneel worden geholpen.
+                        </p>
+                    </div>
+
+                    <div class="content-block">
+                        <h2>Wat je krijgt</h2>
+                        <ul class="features-list">
+                            <li>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                                <div>
+                                    <h3>Email & Chat Support</h3>
+                                    <p>Snelle en persoonlijke afhandeling van alle klantvragen via email, chat of contactformulier. Binnen 24 uur antwoord, vaak veel sneller.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                                <div>
+                                    <h3>Toegangsbeheer</h3>
+                                    <p>Beheer van klantaccounts, wachtwoord resets, toegangsrechten en technische vragen over inloggen. Alles netjes en overzichtelijk.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                                <div>
+                                    <h3>Betalingscontrole & Facturen</h3>
+                                    <p>Controle van betalingen, versturen van facturen en herinneringen, en afhandeling van betalingsvragen. Altijd up-to-date.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                                <div>
+                                    <h3>Proactieve Communicatie</h3>
+                                    <p>Ik denk mee, signaleer problemen voordat ze groot worden, en stel verbeteringen voor. Geen robot, maar een menselijke aanpak.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="content-block">
+                        <h2>Hoe het werkt</h2>
+                        <div class="process-steps">
+                            <div class="step">
+                                <span class="step-number">01</span>
+                                <div>
+                                    <h3>Kennismaking & Onboarding</h3>
+                                    <p>We bespreken jouw bedrijf, klanten, tools en werkwijze. Ik krijg toegang tot de benodigde systemen en maak een draaiboek voor veelvoorkomende vragen.</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <span class="step-number">02</span>
+                                <div>
+                                    <h3>Opstart & Samenwerking</h3>
+                                    <p>Ik neem de customer service over en we stemmen regelmatig af over de voortgang. Je blijft altijd op de hoogte via korte updates.</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <span class="step-number">03</span>
+                                <div>
+                                    <h3>Continue Verbetering</h3>
+                                    <p>Ik signaleer patronen in klantvragen en stel verbeteringen voor: betere FAQ's, duidelijkere instructies, of procesoptimalisaties die tickets voorkomen.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-block">
+                        <h2>Voor wie is dit?</h2>
+                        <p>
+                            Deze dienst is perfect voor online ondernemers die een groeiend klantenbestand hebben en merken dat customer service steeds meer tijd kost. Of je nu een online cursus verkoopt, een SaaS-platform runt, of digitale producten aanbiedt – ik help je om professionele service te bieden zonder zelf elke email te hoeven beantwoorden.
+                        </p>
+                        <div class="ideal-clients">
+                            <div class="client-type">
+                                <h3>Online Cursusmakers</h3>
+                                <p>Je verkoopt cursussen via Kennis.shop of een andere platform en hebt regelmatig vragen over toegang, betalingen en inhoud.</p>
+                            </div>
+                            <div class="client-type">
+                                <h3>SaaS & Software Bedrijven</h3>
+                                <p>Je hebt een groeiend aantal gebruikers die support nodig hebben bij het gebruik van je product en technische vragen.</p>
+                            </div>
+                            <div class="client-type">
+                                <h3>E-commerce Ondernemers</h3>
+                                <p>Je verkoopt digitale of fysieke producten en wilt dat klanten snel en vriendelijk worden geholpen bij vragen.</p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Sidebar CTA -->
+                <aside class="content-sidebar">
+                    <div class="sidebar-cta">
+                        <h3>Interesse in deze dienst?</h3>
+                        <p>Laten we bespreken hoe ik je kan helpen.</p>
+                        <a href="../contact.html" class="btn btn-primary">Start Gesprek</a>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Services -->
+    <section class="related-services-section">
+        <div class="container">
+            <h2 class="section-title">Andere Services</h2>
+            <div class="services-grid-small">
+                <div class="service-card-small">
+                    <span class="service-number">01</span>
+                    <h3>Website Development</h3>
+                    <p>Van concept tot live website, met focus op SEO en gebruiksgemak.</p>
+                    <a href="website-development.html" class="service-link">Meer info →</a>
+                </div>
+                <div class="service-card-small">
+                    <span class="service-number">02</span>
+                    <h3>Kennis.shop Expert</h3>
+                    <p>Complete Kennis.shop ondersteuning voor betaalpagina's en cursussen.</p>
+                    <a href="kennisshop-betaalpaginas.html" class="service-link">Meer info →</a>
+                </div>
+                <div class="service-card-small">
+                    <span class="service-number">03</span>
+                    <h3>SEO met AI-voorsprong</h3>
+                    <p>Optimaliseer je website met klassieke SEO en AI-ondersteuning.</p>
+                    <a href="seo-optimalisatie.html" class="service-link">Meer info →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Klaar om te starten?</h2>
+                <p>Neem contact op voor een vrijblijvend gesprek over je project.</p>
+                <a href="../contact.html" class="btn btn-primary">Neem Contact Op</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <img src="../images/Nordicfix.logo_.png" alt="NordicFix" class="footer-logo">
+                </div>
+                <div class="footer-column">
+                    <h4>Navigatie</h4>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="../services.html">Services</a></li>
+                        <li><a href="../blog.html">Blog</a></li>
+                        <li><a href="../over.html">Over</a></li>
+                        <li><a href="../contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="customer-service.html">Customer Service</a></li>
+                        <li><a href="website-development.html">Website Development</a></li>
+                        <li><a href="kennisshop-betaalpaginas.html">Kennis.shop Expert</a></li>
+                        <li><a href="online-leeromgeving.html">Slimme Toolintegraties</a></li>
+                        <li><a href="seo-optimalisatie.html">SEO met AI-voorsprong</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Effectief sparren</h4>
+                    <ul>
+                        <li><a href="../contact.html">Neem contact op en ervaar het zelf.</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 NordicFix.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>
