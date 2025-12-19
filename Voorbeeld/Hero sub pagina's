@@ -1,0 +1,15 @@
+<section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-logo">
+                    <img src="/images/Nordicfix.logo_.png" alt="NordicFix Logo"
+                        style="max-width: 60%; margin-bottom: 30px;">
+                </div>
+                <h1 class="hero-title" style="font-size: 2.5rem;">
+                    <span class="title-line">XXXXXX</span>
+                    <span class="title-line accent">XXXXXXX</span>
+                </h1>
+            </div>
+        </div>
+        </div>
+    </section>
