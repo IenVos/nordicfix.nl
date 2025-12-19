@@ -987,13 +987,13 @@ section {
     }
 
     .nav-links {
-        display: none !important;
+        display: none;
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         height: 100vh;
-        background: rgba(15, 30, 41, 0.98);
+        background: #1e3a4f(15, 30, 41, 0.98);
         backdrop-filter: blur(20px);
         flex-direction: column;
         justify-content: center;
