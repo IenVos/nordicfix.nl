@@ -960,24 +960,7 @@ section {
     margin-top: 60px;
 }
 
-.stat-item {
-    padding: 15px 12px;
-    /* Voeg toe */
-}
 
-.stat-number {
-    font-size: 16px;
-    /* Voeg toe */
-    font-weight: 600;
-    margin-bottom: 8px;
-    line-height: 1.2;
-}
-
-.stat-label {
-    font-size: 13px;
-
-    line-height: 1.4;
-}
 
 .stat-item {
     text-align: center;
@@ -1510,4 +1493,73 @@ section {
         text-align: left;
         /* Blijft links op mobiel */
     }
+}
+@media (max-width: 768px) {
+    .extra-services-grid {
+        grid-template-columns: 1fr;
+    }
+}
+html,
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+/* ====================================
+   Services Toggle / Slide Animatie
+   ==================================== */
+
+/* Verberg extra services */
+.hidden-service {
+    display: none;
+    opacity: 0;
+    transform: translateY(-30px);
+}
+
+/* Wanneer ze getoond worden */
+.hidden-service.show {
+    display: block;
+    animation: slideDown 0.6s ease-out forwards;
+}
+
+/* Slide down animatie */
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Button styling */
+.services-toggle {
+    text-align: center;
+    margin-top: 48px;
+}
+
+.services-toggle .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 240px;
+    justify-content: center;
+}
+
+.toggle-icon {
+    transition: transform 0.4s ease;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Pijltje draait wanneer uitgeklapt */
+.services-toggle .btn.active .toggle-icon {
+    transform: rotate(180deg);
+}
+
+/* Hover effect */
+.services-toggle .btn:hover {
+    transform: translateY(-2px);
 }
