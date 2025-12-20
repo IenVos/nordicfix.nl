@@ -66,9 +66,9 @@ document.addEventListener('DOMContentLoaded', function () {
         observer.observe(el);
     });
 
-    // Platform items
-    const platformItems = document.querySelectorAll('.platform-item');
-    platformItems.forEach(item => observer.observe(item));
+    // Extra service cards
+    const extraServiceCards = document.querySelectorAll('.extra-service-card');
+    extraServiceCards.forEach(item => observer.observe(item));
 });
 
 // ====================================
