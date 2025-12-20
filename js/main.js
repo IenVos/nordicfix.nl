@@ -55,18 +55,9 @@ const observer = new IntersectionObserver(function (entries) {
     });
 }, observerOptions);
 
-// Observe all animated elements
+/// Observe all animated elements
 document.addEventListener('DOMContentLoaded', function () {
-    // Service cards en USP items
-    const serviceCards = document.querySelectorAll('.service-card, .usp-item');
-    serviceCards.forEach((el, index) => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
-        observer.observe(el);
-    });
-
-    // Extra service cards
+    // Alleen extra service cards animeren
     const extraServiceCards = document.querySelectorAll('.extra-service-card');
     extraServiceCards.forEach(item => observer.observe(item));
 });
