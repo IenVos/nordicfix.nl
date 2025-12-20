@@ -262,6 +262,7 @@
     </section>
 
     <!-- Footer -->
+    <!-- Footer -->
     <footer class="main-footer">
         <div class="container">
             <div class="footer-content">
@@ -281,17 +282,17 @@
                 <div class="footer-column">
                     <h4>Services</h4>
                     <ul>
-                        <li><a href="/services/customer-services/">Customer Service</a></li>
+                        <li><a href="/services/customer-service/">Customer Service</a></li>
                         <li><a href="/services/website-development/">Website Development</a></li>
                         <li><a href="/services/kennisshop-expert/">Kennis.shop Expert</a></li>
                         <li><a href="/services/slimme-toolintegraties/">Slimme Toolintegraties</a></li>
-                        <li><a href="/services/seo-ai-voorsprong/">SEO met AI-voorsprong</a></li>
+                        <li><a href="/services/seo-optimalisatie/">SEO met AI-voorsprong</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
                     <h4>Effectief sparren</h4>
                     <ul>
-                        <li><a href="contact">Neem contact op en ervaar het zelf.</a></li>
+                        <li><a href="/contact/">Neem contact op en ervaar het zelf.</a></li>
                     </ul>
                 </div>
             </div>
@@ -299,56 +300,59 @@
                 <p>&copy; 2025 NordicFix.</p>
             </div>
         </div>
-        </footer>
-        
-        <script src="/js/main.js"></script>
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                const toggleBtn = document.getElementById('toggleServices');
-                const hiddenServices = document.querySelectorAll('.hidden-service');
-                const toggleText = toggleBtn.querySelector('.toggle-text');
-                const toggleIcon = toggleBtn.querySelector('.toggle-icon');
+    </footer>
+    
+    <script src="/js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const toggleBtn = document.getElementById('toggleServices');
+            const hiddenServices = document.querySelectorAll('.hidden-service');
+            const toggleText = toggleBtn.querySelector('.toggle-text');
+            const toggleIcon = toggleBtn.querySelector('.toggle-icon');
 
-                let isExpanded = false;
+            let isExpanded = false;
 
-                toggleBtn.addEventListener('click', function () {
-                    isExpanded = !isExpanded;
+            toggleBtn.addEventListener('click', function () {
+                isExpanded = !isExpanded;
 
-                    if (isExpanded) {
-                        // TOON ALLE SERVICES met slide effect
-                        hiddenServices.forEach((service, index) => {
-                            setTimeout(() => {
-                                service.classList.add('show');
-                            }, index * 100); // Elke service 0.1s later
-                        });
+                if (isExpanded) {
+                    // TOON ALLE SERVICES met slide effect
+                    hiddenServices.forEach((service, index) => {
+                        service.style.display = 'block';
+                        setTimeout(() => {
+                            service.classList.add('show');
+                        }, index * 100); // Elke service 0.1s later
+                    });
 
-                        toggleText.textContent = 'Toon minder';
-                        toggleBtn.classList.add('active');
+                    toggleText.textContent = 'Toon minder';
+                    toggleIcon.textContent = '↑';
+                    toggleBtn.classList.add('active');
 
-                    } else {
-                        // VERBERG SERVICES
+                } else {
+                    // VERBERG SERVICES
+                    hiddenServices.forEach(service => {
+                        service.classList.remove('show');
+                    });
+
+                    setTimeout(() => {
                         hiddenServices.forEach(service => {
-                            service.classList.remove('show');
-                            setTimeout(() => {
-                                service.style.display = 'none';
-                            }, 300);
+                            service.style.display = 'none';
                         });
+                    }, 300);
 
-                        toggleText.textContent = 'Toon alle diensten';
-                        toggleBtn.classList.remove('active');
+                    toggleText.textContent = 'Toon alle diensten';
+                    toggleIcon.textContent = '↓';
+                    toggleBtn.classList.remove('active');
 
-                        // Scroll terug naar begin van sectie
-                        document.querySelector('.services-preview').scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                });
+                    // Scroll terug naar begin van sectie
+                    document.querySelector('.extra-services').scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
             });
-        </script>
-        </body>
-        
-        </html>
+        });
+    </script>
     </body>
-        
+    
     </html>
