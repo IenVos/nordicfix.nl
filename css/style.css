@@ -1095,6 +1095,7 @@ section {
 .extra-services {
     padding: var(--section-padding) 0;
     background: rgba(15, 30, 41, 0.2);
+    text-align: center;
 }
 
 .extra-services-grid {
@@ -1103,7 +1104,7 @@ section {
     gap: 24px;
     max-width: 1000px;
     margin: 0 auto;
-    justify-items: center;
+
 }
 
 .extra-service-card {
