@@ -13,7 +13,7 @@
     --aurora-teal: rgba(147, 224, 218, 0.5);
     --aurora-mint: rgba(79, 193, 193, 0.4);
     
-    --section-padding: 50px;
+    --section-padding: 30px;
     --container-width: 1200px;
 }
 
@@ -730,6 +730,7 @@ section {
     line-height: 1.7;
 }
 
+/* Contact Form */
 .contact-form {
     background: rgba(30, 58, 79, 0.4);
     backdrop-filter: blur(10px);
@@ -764,6 +765,15 @@ section {
     transition: all 0.3s ease;
 }
 
+.form-group select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%236eb5d1' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    padding-right: 40px;
+    cursor: pointer;
+}
+
 .form-group select option {
     background: #1e3a4f;
     color: var(--color-text);
@@ -774,7 +784,7 @@ section {
 .form-group select:focus {
     outline: none;
     border-color: var(--color-accent);
-    background: rgba(10, 21, 32, 0.7);
+    background: rgba(30, 58, 79, 0.9);
 }
 
 .form-group textarea {
@@ -1012,7 +1022,7 @@ section {
 
 @media (max-width: 768px) {
     :root {
-        --section-padding: 40px;
+        --section-padding: 30px;
     }
 
     .mobile-menu-toggle {
@@ -1470,4 +1480,36 @@ section {
 .submit-btn:disabled {
     opacity: 0.6;
     cursor: not-allowed;
+}
+.nordic-story {
+    max-width: 800px;
+    margin: 80px auto 0;
+}
+
+.nordic-story h2 {
+    text-align: left;
+    font-size: clamp(28px, 4vw, 36px);
+    color: var(--color-white);
+    margin-bottom: 20px;
+}
+
+.nordic-story p {
+    text-align: left;
+    color: var(--color-text-muted);
+    font-size: 18px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.nordic-story p.highlight {
+    font-weight: 600;
+    margin-bottom: 40px;
+}
+@media (max-width: 768px) {
+
+    .nordic-story h2,
+    .nordic-story p {
+        text-align: left;
+        /* Blijft links op mobiel */
+    }
 }
