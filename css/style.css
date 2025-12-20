@@ -53,6 +53,8 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
     z-index: -1;
     overflow: hidden;
 }
@@ -548,14 +550,37 @@ section {
 .usp-item h3 {
     font-size: 22px;
     font-weight: 700;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
     color: var(--color-white);
+    line-height: 1.3;
 }
 
 .usp-item p {
     color: var(--color-text-muted);
     line-height: 1.6;
     margin-top: 0;
+    font-size: 16px;
+}
+
+/* Mobiel responsive */
+@media (max-width: 768px) {
+    .usp-item {
+        padding: 24px 20px;
+    }
+
+    .usp-number {
+        font-size: 36px;
+        margin-bottom: 12px;
+    }
+
+    .usp-item h3 {
+        font-size: 18px;
+    }
+
+    .usp-item p {
+        font-size: 14px;
+        line-height: 1.5;
+    }
 }
 
 /* ====================================
@@ -1505,6 +1530,20 @@ html,
 body {
     min-height: 100vh;
     overflow-x: hidden;
+}
+html {
+    scroll-behavior: smooth;
+    height: -webkit-fill-available;
+}
+
+body {
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #0a1520;
+    color: var(--color-text);
+    line-height: 1.6;
+    overflow-x: hidden;
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
 }
 /* ====================================
    Services Toggle / Slide Animatie
