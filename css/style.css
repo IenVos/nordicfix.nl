@@ -1563,3 +1563,54 @@ body {
 .services-toggle .btn:hover {
     transform: translateY(-2px);
 }
+/* ====================================
+   UNIVERSELE CONTAINER & GRID FIX
+   Zorgt dat alles netjes uitgelijnd staat
+   ==================================== */
+
+/* Alle containers dezelfde breedte en afstand */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Reset alle grids */
+.services-grid,
+.extra-services-grid,
+.reviews-grid {
+    display: grid;
+    gap: 32px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* Zorg dat cards geen extra margin hebben */
+.service-card,
+.extra-service-card,
+.review-card {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* Mobiel responsive */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 16px;
+    }
+
+    .services-grid,
+    .extra-services-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 12px;
+    }
+}
