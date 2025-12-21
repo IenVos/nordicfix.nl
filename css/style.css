@@ -617,6 +617,7 @@ USP Section
 ==================================== */
 .usp-section {
     padding: var(--section-padding) 0;
+    margin-bottom: 60px; /* Voeg toe - meer ruimte eronder */
 }
 
 .usp-content h2 {
