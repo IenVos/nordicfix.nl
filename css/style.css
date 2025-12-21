@@ -1605,7 +1605,14 @@ body {
 .services-toggle .btn:hover {
     transform: translateY(-2px);
 }
-/* Fade-in animatie bij scrollen */
+
+.platforms-grid .platform-item:nth-child(5) {
+    transition-delay: 0.5s;
+}
+
+.platforms-grid .platform-item:nth-child(6) {
+    transition-delay: 0.6s;
+}/* Fade-in animatie bij scrollen */
 .platforms-grid .platform-item {
     opacity: 0;
     transform: translateY(30px);
@@ -1618,57 +1625,7 @@ body {
     transform: translateY(0);
 }
 
-/* Vertraagde animatie per item */
-.platforms-grid .platforms-grid .platform-item:nth-child(1),
-.extra-service-card:nth-child(1) {.platform-item:nth-child(1) {
-    transition-delay: 0.1s;
-}
-
-.platforms-grid .platform-item:nth-child(2) {
-    transition-delay: 0.2s;
-}
-
-.platforms-grid .platform-item:nth-child(3) {
-    transition-delay: 0.3s;
-}
-
-.platforms-grid .platform-item:nth-child(4) {
-    transition-delay: 0.4s;
-}
-
-.platforms-grid .platform-item:nth-child(5) {
-    transition-delay: 0.5s;
-}
-
-.platforms-grid .platform-item:nth-child(6) {
-    transition-delay: 0.6s;
-}
-
-.platforms-grid .platform-item:nth-child(7) {
-    transition-delay: 0.7s;
-}
-
-.platforms-grid .platform-item:nth-child(8) {
-    transition-delay: 0.8s;
-}
-
-.platforms-grid .platform-item:nth-child(9) {
-    transition-delay: 0.9s;
-}
-
-.platforms-grid .platform-item:nth-child(10) {
-    transition-delay: 1.0s;
-}
-
-.platforms-grid .platform-item:nth-child(11) {
-    transition-delay: 1.1s;
-}
-
-.platforms-grid .platform-item:nth-child(12) {
-    transition-delay: 1.2s;
-}
-
-/* Extra service cards animatie */
+/* Fade-in animatie bij scrollen */
 .extra-service-card {
     opacity: 0;
     transform: translateY(30px);
@@ -1738,5 +1695,4 @@ body {
 
 .extra-service-card:nth-child(15) {
     transition-delay: 1.5s;
-}
 }
