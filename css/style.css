@@ -1708,3 +1708,69 @@ grid-template-columns: 1fr;
     width: 100%;
     text-align: center;
 }
+/* De knop in de review kaart */
+.review-verify {
+    margin-top: 15px;
+    font-size: 0.85rem;
+    color: rgba(79, 193, 193, 0.4);
+    /* Of je eigen accentkleur */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    text-decoration: underline;
+    font-weight: 500;
+}
+
+.review-verify:hover {
+    color: rgba(110, 181, 209, 0.6);
+}
+
+/* De Popup Achtergrond echte review */
+.review-modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(41, 65, 75, 0.395);
+    cursor: zoom-out;
+    justify-content: center;
+    align-items: center;
+}
+
+/* De Afbeelding zelf */
+.modal-img {
+    max-width: 90%;
+    max-height: 80vh;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    cursor: default;
+}
+
+/* De sluitknop */
+.close-modal {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+@media (max-width: 600px) {
+    .review-verify {
+        padding: 10px 0;
+        /* Groter klik-oppervlak voor duimen */
+        font-size: 0.9rem;
+        /* Iets grotere tekst voor leesbaarheid */
+    }
+
+    .close-modal {
+        top: 10px;
+        right: 20px;
+        font-size: 50px;
+        /* Grotere sluitknop voor mobiel */
+    }
+}
