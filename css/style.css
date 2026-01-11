@@ -247,6 +247,8 @@ Hero Section
 /* ====================================
 Buttons
 ==================================== */
+/* Buttons
+==================================== */
 .btn {
     display: inline-block;
     padding: 16px 36px;
@@ -256,36 +258,42 @@ Buttons
     text-decoration: none;
     transition: all 0.3s ease;
     cursor: pointer;
+    color: #ffffff !important;
+    /* Toegevoegd !important voor de zekerheid */
 }
 
 .btn-primary {
     background: var(--color-accent);
-    color: var(--color-white);
+    color: #ffffff !important;
 }
 
 .btn-primary:hover {
     background: #e08a45;
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(243, 156, 90, 0.3);
+    color: #ffffff !important;
 }
 
 .btn-secondary {
     background: transparent;
-    color: var(--color-secondary);
+    color: #ffffff !important;
+    /* Hier stond de fout */
     border: 2px solid var(--color-secondary);
 }
 
 .btn-secondary:hover {
     background: rgba(110, 181, 209, 0.1);
     border-color: var(--color-accent);
-    color: var(--color-accent);
+    color: #ffffff !important;
+    /* Hier stond de fout */
 }
 
 .btn-compact {
     display: inline-block;
     padding: 10px 24px;
     background: transparent;
-    color: var(--color-secondary);
+    color: #ffffff !important;
+    /* Hier stond de fout */
     border: 2px solid var(--color-secondary);
     border-radius: 8px;
     font-weight: 600;
@@ -297,7 +305,8 @@ Buttons
 .btn-compact:hover {
     background: rgba(110, 181, 209, 0.1);
     border-color: var(--color-accent);
-    color: var(--color-accent);
+    color: #ffffff !important;
+    /* Hier stond de fout */
 }
 
 /* ====================================
