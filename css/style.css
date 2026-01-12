@@ -500,8 +500,6 @@ Extra Services (Ook Interessant)
     padding: 40px;
     text-align: center;
     transition: all 0.3s ease;
-    opacity: 0;
-    transform: translateY(30px);
 }
 
 .extra-service-card.visible {
