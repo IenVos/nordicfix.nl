@@ -1,250 +1,289 @@
 // ====================================
-// Mobile Menu Toggle - VERBETERD
+// Mobile Menu Toggle - OPTIMIZED
 // ====================================
-document.addEventListener('DOMContentLoaded', function () {
+(function initMobileMenu() {
     const menuToggle = document.querySelector('.mobile-menu-toggle');
     const navLinks = document.querySelector('.nav-links');
     const body = document.body;
 
-    // Debug check - kun je verwijderen na testen
-    console.log('Menu elements found:', { menuToggle: !!menuToggle, navLinks: !!navLinks });
-
-    if (menuToggle && navLinks) {
-        menuToggle.addEventListener('click', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            const isActive = navLinks.classList.contains('active');
-
-            navLinks.classList.toggle('active');
-            this.classList.toggle('active');
-
-            // Prevent body scroll when menu is open (FIX!)
-            if (!isActive) {
-                body.style.overflow = 'hidden';
-            } else {
-                body.style.overflow = '';
-            }
-
-            console.log('Menu toggled, active:', !isActive); // Debug - kun je verwijderen
-        });
-
-        // Close mobile menu when clicking on a link
-        const navLinkItems = navLinks.querySelectorAll('a');
-        navLinkItems.forEach(link => {
-            link.addEventListener('click', function () {
-                navLinks.classList.remove('active');
-                menuToggle.classList.remove('active');
-                body.style.overflow = ''; // Reset scroll
-            });
-        });
-
-        // Close menu when clicking outside (NIEUW!)
-        document.addEventListener('click', function (e) {
-            if (navLinks.classList.contains('active')) {
-                if (!navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
-                    navLinks.classList.remove('active');
-                    menuToggle.classList.remove('active');
-                    body.style.overflow = '';
-                }
-            }
-        });
-    } else {
-        console.error('Mobile menu elements not found!'); // Debug
+    if (!menuToggle || !navLinks) {
+        console.warn('Mobile menu elements not found');
+        return;
     }
-});
+
+    // Toggle menu
+    menuToggle.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const isActive = navLinks.classList.toggle('active');
+        this.classList.toggle('active');
+        body.style.overflow = isActive ? 'hidden' : '';
+    });
+
+    // Close on link click
+    navLinks.addEventListener('click', function (e) {
+        if (e.target.tagName === 'A') {
+            navLinks.classList.remove('active');
+            menuToggle.classList.remove('active');
+            body.style.overflow = '';
+        }
+    });
+
+    // Close on outside click (EVENT DELEGATION)
+    document.addEventListener('click', function (e) {
+        if (navLinks.classList.contains('active') &&
+            !navLinks.contains(e.target) &&
+            !menuToggle.contains(e.target)) {
+            navLinks.classList.remove('active');
+            menuToggle.classList.remove('active');
+            body.style.overflow = '';
+        }
+    });
+
+    // Close on ESC key
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+            navLinks.classList.remove('active');
+            menuToggle.classList.remove('active');
+            body.style.overflow = '';
+        }
+    });
+})();
 
 // ====================================
-// Video Controls Fix - NIEUW!
+// Video Controls - OPTIMIZED
 // ====================================
-document.addEventListener('DOMContentLoaded', function () {
+(function initVideoBackground() {
     const video = document.querySelector('.video-background video');
 
-    if (video) {
-        console.log('Video element found'); // Debug
+    if (!video) return;
 
-        // Remove all controls completely
-        video.removeAttribute('controls');
-        video.setAttribute('playsinline', 'true');
-        video.setAttribute('webkit-playsinline', 'true');
-        video.setAttribute('muted', 'true');
+    // Configure video attributes
+    Object.assign(video, {
+        controls: false,
+        playsInline: true,
+        muted: true
+    });
 
-        // Prevent right-click context menu
-        video.addEventListener('contextmenu', function (e) {
-            e.preventDefault();
-            return false;
+    video.setAttribute('playsinline', '');
+    video.setAttribute('webkit-playsinline', '');
+    video.style.pointerEvents = 'none';
+
+    // Prevent context menu
+    video.addEventListener('contextmenu', e => e.preventDefault());
+
+    // Autoplay with fallback
+    const playVideo = () => {
+        video.play().catch(() => {
+            document.addEventListener('touchstart', () => video.play(), { once: true });
+            document.addEventListener('click', () => video.play(), { once: true });
         });
+    };
 
-        // Prevent any interaction with video
-        video.style.pointerEvents = 'none';
-
-        // Force autoplay (especially on mobile)
-        const playPromise = video.play();
-
-        if (playPromise !== undefined) {
-            playPromise.then(function () {
-                console.log('Video autoplay started');
-            }).catch(function (error) {
-                console.log('Video autoplay prevented:', error);
-                // Retry after user interaction
-                document.addEventListener('touchstart', function () {
-                    video.play();
-                }, { once: true });
-            });
-        }
-    } else {
-        console.log('No video element found');
-    }
-});
+    playVideo();
+})();
 
 // ====================================
-// Smooth Scroll for Anchor Links
+// Smooth Scroll - OPTIMIZED
 // ====================================
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        const href = this.getAttribute('href');
-        if (href !== '#' && document.querySelector(href)) {
-            e.preventDefault();
-            const target = document.querySelector(href);
-            const offsetTop = target.offsetTop - 90;
+(function initSmoothScroll() {
+    document.addEventListener('click', function (e) {
+        const anchor = e.target.closest('a[href^="#"]');
+        if (!anchor) return;
 
-            window.scrollTo({
-                top: offsetTop,
-                behavior: 'smooth'
-            });
-        }
+        const href = anchor.getAttribute('href');
+        if (href === '#') return;
+
+        const target = document.querySelector(href);
+        if (!target) return;
+
+        e.preventDefault();
+
+        const offsetTop = target.getBoundingClientRect().top + window.pageYOffset - 90;
+
+        window.scrollTo({
+            top: offsetTop,
+            behavior: 'smooth'
+        });
     });
-});
+})();
 
 // ====================================
-// Intersection Observer for Animations
+// Intersection Observer Animations - OPTIMIZED
 // ====================================
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
-
-const observer = new IntersectionObserver(function (entries) {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-        }
+(function initScrollAnimations() {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target); // Performance: stop observing
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
     });
-}, observerOptions);
 
-// Observe service cards and USP items
-document.addEventListener('DOMContentLoaded', function () {
-    const animatedElements = document.querySelectorAll('.service-card, .usp-item');
-
-    animatedElements.forEach((el, index) => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+    // Observe elements
+    document.querySelectorAll('.service-card, .usp-item, .extra-service-card').forEach((el, index) => {
+        el.style.cssText = `
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s;
+        `;
         observer.observe(el);
     });
-});
+})();
 
 // ====================================
-// Active Navigation Link
+// Active Navigation Link - OPTIMIZED
 // ====================================
-function setActiveNavLink() {// Cookie Banner Functionality
-    document.addEventListener('DOMContentLoaded', function () {
-
-        // Check if user has already made a choice
-        if (!getCookie('cookieConsent')) {
-            showCookieBanner();
-        }
-
-        // Cookie banner event listeners
-        const acceptBtn = document.getElementById('accept-cookies');
-        const rejectBtn = document.getElementById('reject-cookies');
-
-        if (acceptBtn) {
-            acceptBtn.addEventListener('click', function () {
-                setCookie('cookieConsent', 'accepted', 365);
-                hideCookieBanner();
-                loadAnalytics(); // Load analytics if user accepts
-            });
-        }
-
-        if (rejectBtn) {
-            rejectBtn.addEventListener('click', function () {
-                setCookie('cookieConsent', 'rejected', 365);
-                hideCookieBanner();
-            });
-        }
-
-        // If user accepted cookies, load analytics
-        if (getCookie('cookieConsent') === 'accepted') {
-            loadAnalytics();
-        }
-    });
-
-    function showCookieBanner() {
-        const banner = document.getElementById('cookie-banner');
-        if (banner) {
-            banner.style.display = 'block';
-            // Fade in animation
-            setTimeout(() => {
-                banner.style.opacity = '1';
-                banner.style.transform = 'translateY(0)';
-            }, 100);
-        }
-    }
-
-    function hideCookieBanner() {
-        const banner = document.getElementById('cookie-banner');
-        if (banner) {
-            banner.style.opacity = '0';
-            banner.style.transform = 'translateY(20px)';
-            setTimeout(() => {
-                banner.style.display = 'none';
-            }, 300);
-        }
-    }
-
-    // Cookie helper functions
-    function setCookie(name, value, days) {
-        const expires = new Date();
-        expires.setTime(expires.getTime() + (days * 24 * 60 * 60 * 1000));
-        document.cookie = name + '=' + value + ';expires=' + expires.toUTCString() + ';path=/';
-    }
-
-    function getCookie(name) {
-        const nameEQ = name + '=';
-        const ca = document.cookie.split(';');
-        for (let i = 0; i < ca.length; i++) {
-            let c = ca[i];
-            while (c.charAt(0) === ' ') c = c.substring(1, c.length);
-            if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
-        }
-        return null;
-    }
-
-    // Load analytics only if user accepted
-    function loadAnalytics() {
-        // Hier kun je Google Analytics of andere tracking scripts toevoegen
-        // Bijvoorbeeld:
-        // if (typeof gtag !== 'undefined') {
-        //     gtag('consent', 'update', {
-        //         'analytics_storage': 'granted'
-        //     });
-        // }
-        console.log('Analytics loaded - user accepted cookies');
-    }
+(function setActiveNavLink() {
     const currentPath = window.location.pathname;
     const navLinks = document.querySelectorAll('.nav-links a:not(.cta-button)');
 
     navLinks.forEach(link => {
-        link.classList.remove('active');
-        const linkPath = new URL(link.href).pathname;
+        const linkPath = new URL(link.href, window.location.origin).pathname;
+        const isActive = currentPath === linkPath ||
+            (linkPath !== '/' && currentPath.includes(linkPath));
 
-        if (currentPath === linkPath ||
-            (currentPath.includes(linkPath) && linkPath !== '/')) {
-            link.classList.add('active');
+        link.classList.toggle('active', isActive);
+    });
+})();
+
+// ====================================
+// Cookie Banner - OPTIMIZED
+// ====================================
+(function initCookieBanner() {
+    const banner = document.getElementById('cookie-banner');
+    if (!banner) return;
+
+    const COOKIE_NAME = 'cookieConsent';
+    const COOKIE_DAYS = 365;
+
+    // Helper functions
+    const setCookie = (value) => {
+        const expires = new Date(Date.now() + COOKIE_DAYS * 864e5).toUTCString();
+        document.cookie = `${COOKIE_NAME}=${value};expires=${expires};path=/;SameSite=Lax`;
+    };
+
+    const getCookie = () => {
+        return document.cookie.split('; ').find(row => row.startsWith(COOKIE_NAME + '='))?.split('=')[1];
+    };
+
+    const showBanner = () => {
+        banner.style.display = 'block';
+        requestAnimationFrame(() => {
+            banner.style.opacity = '1';
+            banner.style.transform = 'translateY(0)';
+        });
+    };
+
+    const hideBanner = () => {
+        banner.style.opacity = '0';
+        banner.style.transform = 'translateY(20px)';
+        setTimeout(() => banner.style.display = 'none', 300);
+    };
+
+    const loadAnalytics = () => {
+        console.log('Analytics loaded - user accepted cookies');
+        // Add your analytics code here
+    };
+
+    // Event handlers
+    const handleAccept = () => {
+        setCookie('accepted');
+        hideBanner();
+        loadAnalytics();
+    };
+
+    const handleReject = () => {
+        setCookie('rejected');
+        hideBanner();
+    };
+
+    // Initialize
+    const consent = getCookie();
+
+    if (!consent) {
+        showBanner();
+    } else if (consent === 'accepted') {
+        loadAnalytics();
+    }
+
+    // Event listeners
+    document.getElementById('accept-cookies')?.addEventListener('click', handleAccept);
+    document.getElementById('reject-cookies')?.addEventListener('click', handleReject);
+})();
+
+// ====================================
+// Technologies "Show More" - OPTIMIZED
+// ====================================
+(function initTechShowMore() {
+    const techSection = document.querySelector('.extra-services');
+    if (!techSection) return;
+
+    const cards = Array.from(techSection.querySelectorAll('.extra-service-card'));
+    const VISIBLE_COUNT = 6;
+
+    if (cards.length <= VISIBLE_COUNT) return;
+
+    // Hide cards after 6th
+    cards.forEach((card, index) => {
+        if (index >= VISIBLE_COUNT) {
+            card.style.display = 'none';
+            card.classList.add('hidden-tech');
         }
     });
+
+    // Create button
+    const grid = techSection.querySelector('.extra-services-grid');
+    const btn = document.createElement('button');
+    btn.className = 'btn btn-secondary show-more-tech';
+    btn.style.cssText = 'margin: 40px auto 0; display: block;';
+    btn.innerHTML = 'Bekijk alle tools <span class="toggle-icon">▼</span>';
+
+    grid.parentElement.appendChild(btn);
+
+    let isExpanded = false;
+
+    btn.addEventListener('click', function () {
+        isExpanded = !isExpanded;
+
+        cards.forEach((card, index) => {
+            if (index >= VISIBLE_COUNT) {
+                if (isExpanded) {
+                    card.style.display = 'block';
+                    setTimeout(() => card.classList.add('visible'), 50 * (index - VISIBLE_COUNT));
+                } else {
+                    card.style.display = 'none';
+                    card.classList.remove('visible');
+                }
+            }
+        });
+
+        btn.innerHTML = isExpanded
+            ? 'Toon minder <span class="toggle-icon">▲</span>'
+            : 'Bekijk alle tools <span class="toggle-icon">▼</span>';
+
+        // Scroll to section if collapsing
+        if (!isExpanded) {
+            techSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+    });
+})();
+
+// ====================================
+// Initialize on DOM Ready
+// ====================================
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+} else {
+    init();
 }
 
-document.addEventListener('DOMContentLoaded', setActiveNavLink);
+function init() {
+    // All IIFE functions auto-execute
+    console.log('✅ All scripts initialized');
+}
