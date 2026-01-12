@@ -88,6 +88,71 @@ Aurora Background
     height: 100%;
     background: rgba(10, 21, 32, 0.2);
 }
+/* ====================================
+   VIDEO FIXES - Verberg play button op mobiel
+   Voeg dit toe aan je style.css
+   ==================================== */
+
+/* Video achtergrond - Extra fixes */
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+    /* Voorkomt interactie met video */
+}
+
+.video-background video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    pointer-events: none;
+    /* Voorkomt klikken op video */
+}
+
+/* KRITISCH: Verberg alle video controls */
+.video-background video::-webkit-media-controls {
+    display: none !important;
+}
+
+.video-background video::-webkit-media-controls-enclosure {
+    display: none !important;
+}
+
+.video-background video::-webkit-media-controls-panel {
+    display: none !important;
+}
+
+.video-background video::-webkit-media-controls-play-button {
+    display: none !important;
+}
+
+.video-background video::-webkit-media-controls-start-playback-button {
+    display: none !important;
+}
+
+/* Firefox */
+.video-background video::-moz-media-controls {
+    display: none !important;
+}
+
+/* Voor extra zekerheid */
+.video-background video {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
 
 /* ====================================
 Navigation
