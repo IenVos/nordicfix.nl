@@ -177,6 +177,7 @@
         <div class="container">
             <h2 class="section-title" style="margin-bottom: 40px;">Ik werk dagelijks met</h2>
             <div class="extra-services-grid">
+                <!-- Zichtbaar (Eerste 6) -->
                 <div class="extra-service-card">
                     <h3>Kennis.shop</h3>
                 </div>
@@ -187,42 +188,51 @@
                     <h3>Helpscout</h3>
                 </div>
                 <div class="extra-service-card">
-                        <h3>GoHighlevel</h3>
-                    </div>
+                    <h3>GoHighlevel</h3>
+                </div>
                 <div class="extra-service-card">
                     <h3>Trello | Slack | Discord</h3>
                 </div>
                 <div class="extra-service-card">
                     <h3>Community platforms</h3>
                 </div>
-                <div class="extra-service-card">
+    
+                <!-- VERBORGEN (Vanaf hier hidden-platform class en style display:none) -->
+                <div class="extra-service-card hidden-platform" style="display: none;">
                     <h3>WordPress</h3>
                 </div>
-                <div class="extra-service-card">
+                <div class="extra-service-card hidden-platform" style="display: none;">
                     <h3>WooCommerce</h3>
                 </div>
-                <div class="extra-service-card">
+                <div class="extra-service-card hidden-platform" style="display: none;">
                     <h3>Mailerlite | Kit</h3>
                 </div>
-                <div class="extra-service-card">
+                <div class="extra-service-card hidden-platform" style="display: none;">
                     <h3>Active Campaign</h3>
                 </div>
-                <div class="extra-service-card">
+                <div class="extra-service-card hidden-platform" style="display: none;">
                     <h3>Phoenix | P&P | Huddle</h3>
-                 </div>
-                <div class="extra-service-card">
+                </div>
+                <div class="extra-service-card hidden-platform" style="display: none;">
                     <h3>Mollie | Stripe</h3>
                 </div>
-                <div class="extra-service-card">
-                    <h3>koppelen van tools</h3>
+                <div class="extra-service-card hidden-platform" style="display: none;">
+                    <h3>Koppelen van tools</h3>
                 </div>
-                <div class="extra-service-card">
+                <div class="extra-service-card hidden-platform" style="display: none;">
                     <h3>Custom platforms</h3>
                 </div>
-                <div class="extra-service-card">
+                <div class="extra-service-card hidden-platform" style="display: none;">
                     <h3>en nog veel meer 😃</h3>
                 </div>
-                </div>
+            </div>
+    
+            <!-- De knop voor de platforms -->
+            <div class="services-toggle" style="margin-top: 40px; text-align: center;">
+                <button class="btn btn-secondary" id="togglePlatforms">
+                    <span class="toggle-text">Bekijk alle platforms</span>
+                    <span class="toggle-icon">↓</span>
+                </button>
             </div>
         </div>
     </section>

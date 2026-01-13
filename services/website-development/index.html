@@ -175,11 +175,12 @@
         </div>
     </section>
 
-        <!-- Technologies Section -->
+        <!-- Technologies Section (Toolkit) -->
         <section class="extra-services">
             <div class="container">
                 <h2 class="section-title" style="margin-bottom: 40px;">Mijn toolkit</h2>
                 <div class="extra-services-grid">
+                    <!-- ZICHTBAAR (Eerste 6) -->
                     <div class="extra-service-card">
                         <h3>WordPress</h3>
                     </div>
@@ -198,35 +199,47 @@
                     <div class="extra-service-card">
                         <h3>Squarespace</h3>
                     </div>
-                    <div class="extra-service-card">
+        
+                    <!-- VERBORGEN (Vanaf hier class "hidden-tech" en display: none) -->
+                    <div class="extra-service-card hidden-tech" style="display: none; opacity: 0;">
                         <h3>Elementor</h3>
                     </div>
-                    <div class="extra-service-card">
+                    <div class="extra-service-card hidden-tech" style="display: none; opacity: 0;">
                         <h3>Figma Design</h3>
                     </div>
-                    <div class="extra-service-card">
+                    <div class="extra-service-card hidden-tech" style="display: none; opacity: 0;">
                         <h3>API Integraties</h3>
                     </div>
-                    <div class="extra-service-card">
+                    <div class="extra-service-card hidden-tech" style="display: none; opacity: 0;">
                         <h3>Stripe & Mollie</h3>
                     </div>
-                    <div class="extra-service-card">
+                    <div class="extra-service-card hidden-tech" style="display: none; opacity: 0;">
                         <h3>SEO Tools</h3>
                     </div>
-                    <div class="extra-service-card">
+                    <div class="extra-service-card hidden-tech" style="display: none; opacity: 0;">
                         <h3>Google Analytics</h3>
                     </div>
-                    <div class="extra-service-card">
+                    <div class="extra-service-card hidden-tech" style="display: none; opacity: 0;">
                         <h3>Phoenix, Wixx</h3>
                     </div>
-                    <div class="extra-service-card">
+                    <div class="extra-service-card hidden-tech" style="display: none; opacity: 0;">
                         <h3>Custom Solutions</h3>
                     </div>
-                    <div class="extra-service-card">
+                    <div class="extra-service-card hidden-tech" style="display: none; opacity: 0;">
                         <h3>en nog veel meer 🚀</h3>
                     </div>
                 </div>
+        
+                <!-- De knop voor de toolkit -->
+                <div style="text-align: center; margin-top: 40px;">
+                    <button class="btn btn-secondary" id="toggleTech">
+                        <span class="toggle-text">Bekijk alle tools</span>
+                        <span class="toggle-icon">↓</span>
+                    </button>
+                </div>
             </div>
+        </section>
+
         </section>
         
         <!-- How it Works -->

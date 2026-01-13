@@ -179,11 +179,12 @@
         </div>
     </section>
     
-    <!-- Technologies Section -->
+    <!-- Tools Section -->
     <section class="extra-services">
         <div class="container">
             <h2 class="section-title" style="margin-bottom: 40px;">Tools die ik gebruik</h2>
             <div class="extra-services-grid">
+                <!-- ZICHTBAAR (Eerste 6) -->
                 <div class="extra-service-card">
                     <h3>ChatGPT & Claude</h3>
                 </div>
@@ -202,30 +203,40 @@
                 <div class="extra-service-card">
                     <h3>WordPress SEO plugins</h3>
                 </div>
-                <div class="extra-service-card">
+    
+                <!-- VERBORGEN (Vanaf hier class "hidden-tools" en display: none) -->
+                <div class="extra-service-card hidden-tools" style="display: none; opacity: 0;">
                     <h3>PageSpeed Insights</h3>
                 </div>
-                <div class="extra-service-card">
+                <div class="extra-service-card hidden-tools" style="display: none; opacity: 0;">
                     <h3>Google Trends</h3>
                 </div>
-                <div class="extra-service-card">
+                <div class="extra-service-card hidden-tools" style="display: none; opacity: 0;">
                     <h3>AnswerThePublic</h3>
                 </div>
-                <div class="extra-service-card">
+                <div class="extra-service-card hidden-tools" style="display: none; opacity: 0;">
                     <h3>LowFruits</h3>
                 </div>
-                <div class="extra-service-card">
+                <div class="extra-service-card hidden-tools" style="display: none; opacity: 0;">
                     <h3>Canva (voor visuals)</h3>
                 </div>
-                <div class="extra-service-card">
+                <div class="extra-service-card hidden-tools" style="display: none; opacity: 0;">
                     <h3>AI schrijftools</h3>
                 </div>
-                <div class="extra-service-card">
+                <div class="extra-service-card hidden-tools" style="display: none; opacity: 0;">
                     <h3>Keyword planners</h3>
                 </div>
-                <div class="extra-service-card">
-                    <h3>Eigen ervaring & testen 🙌 </h3>
+                <div class="extra-service-card hidden-tools" style="display: none; opacity: 0;">
+                    <h3>Eigen ervaring & testen 🙌</h3>
                 </div>
+            </div>
+    
+            <!-- De knop voor deze sectie -->
+            <div style="text-align: center; margin-top: 40px;">
+                <button class="btn btn-secondary" id="toggleTools">
+                    <span class="toggle-text">Bekijk alle tools</span>
+                    <span class="toggle-icon">↓</span>
+                </button>
             </div>
         </div>
     </section>
