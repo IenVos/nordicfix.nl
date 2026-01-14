@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina niet gevonden - NordicFix</title>
+    <link rel="icon" type="image/png" href="/images/nordicfix_favicon.png">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        .error-404 {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .error-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .error-code {
+            font-size: clamp(80px, 15vw, 180px);
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--color-secondary), var(--color-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            line-height: 1;
+        }
+
+        .error-title {
+            font-size: clamp(28px, 5vw, 42px);
+            font-weight: 700;
+            color: var(--color-white);
+            margin-bottom: 20px;
+        }
+
+        .error-text {
+            font-size: 18px;
+            color: var(--color-text-muted);
+            line-height: 1.7;
+            margin-bottom: 40px;
+        }
+
+        .error-actions {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 768px) {
+            .error-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .error-actions .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Video Background -->
+    <div class="video-background">
+        <video autoplay muted loop playsinline webkit-playsinline preload="metadata" controls="false">
+            <source src="/videos/noorderlicht.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <!-- 404 Content -->
+    <section class="error-404">
+        <div class="error-content">
+            <div class="error-code">404</div>
+            <h1 class="error-title">Oeps, er gaat even iets niet goed</h1>
+            <p class="error-text">
+                Maar no worries! De pagina die je zoekt bestaat niet (meer) of is verhuisd. 
+                Stuur me gerust een berichtje als je niet verder kunt met je vraag, of ga terug naar de homepagina.
+            </p>
+            <div class="error-actions">
+                <a href="/" class="btn btn-primary">Terug naar Home</a>
+                <a href="/contact/" class="btn btn-secondary">Stuur een berichtje</a>
+            </div>
+        </div>
+    </section>
+
+    <script src="/js/main.js"></script>
+</body>
+</html>
