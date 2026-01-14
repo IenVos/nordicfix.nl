@@ -2008,11 +2008,11 @@ grid-template-columns: 1fr;
     color: var(--color-white);
     margin-bottom: 20px;
     padding-bottom: 12px;
-    border-bottom: 2px solid rgba(110, 181, 209, 0.2);
+    border-bottom: 2px solid rgba(110, 181, 209, 0.527);
 }
 
 .legal-block p {
-    color: var(--color-text-muted);
+    color: rgba(30, 58, 79, 0.3);;
     font-size: 16px;
     line-height: 1.8;
     margin-bottom: 16px;
@@ -2024,7 +2024,7 @@ grid-template-columns: 1fr;
 }
 
 .legal-block ul li {
-    color: var(--color-text-muted);
+    color: rgba(30, 58, 79, 0.3);;
     font-size: 16px;
     line-height: 1.8;
     margin-bottom: 12px;
@@ -2034,7 +2034,7 @@ grid-template-columns: 1fr;
 
 .legal-block ul li:before {
     content: '→';
-    color: var(--color-accent);
+    color: #333;
     font-weight: 600;
     position: absolute;
     left: 0;
@@ -2070,5 +2070,78 @@ grid-template-columns: 1fr;
     .legal-block p,
     .legal-block ul li {
         font-size: 15px;
+    }
+}
+/* 1. Gebruik een specifieke class voor de body zodat je NOOIT de rest van je site raakt */
+/* Voeg class="legal-page" toe aan de <body> tag van je PP en AV pagina's */
+
+body.legal-page {
+    background: #92c4d7;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* 2. Verberg elementen alleen als ze op de legal-page staan */
+.legal-page .video-background,
+.legal-page .main-nav,
+.legal-page .main-footer,
+.legal-page .page-hero {
+    display: none !important;
+}
+
+/* 3. Header & Logo */
+.simple-header {
+    padding: 80px 40px;
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: left;
+    /* Zorgt dat logo altijd netjes links staat */
+}
+
+.simple-logo img {
+    height: 80px;
+    /* Iets verkleind voor betere verhouding op mobiel */
+    width: auto;
+}
+
+/* 4. Content Styling */
+.legal-content {
+    padding: 0 20px 60px;
+}
+
+.legal-wrapper {
+    background: white;
+    padding: 40px;
+    /* Iets minder padding voor mobiel, zie media query hieronder */
+    border-radius: 16px;
+    max-width: 900px;
+    margin: 0 auto;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    /* Geeft een subtiele diepte op de blauwe achtergrond */
+}
+
+/* 5. Tekst styling (Specifieker maken) */
+.legal-wrapper h1,
+.legal-wrapper h2 {
+    color: #1a1a1a;
+    margin-top: 1.5em;
+}
+
+.legal-wrapper p,
+.legal-wrapper li {
+    color: #7f7e7e;
+    line-height: 1.6;
+    font-size: 1.05rem;
+}
+
+/* 6. Extra: Zorg dat het op mobiel ook mooi blijft */
+@media (max-width: 768px) {
+    .legal-wrapper {
+        padding: 25px;
+    }
+
+    .simple-header {
+        padding: 20px;
     }
 }

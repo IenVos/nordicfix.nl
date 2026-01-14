@@ -25,16 +25,38 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 // ====================================
-// Video Controls
+// Video Controls (Bulletproof)
 // ====================================
-document.addEventListener('DOMContentLoaded', function () {
-    const video = document.querySelector('.video-background video');
-    if (!video) return;
-    video.muted = true;
-    video.play().catch(() => {
-        document.addEventListener('touchstart', () => video.play(), { once: true });
-    });
-});
+(function () {
+    const playVideo = () => {
+        const video = document.querySelector('.video-background video');
+        if (!video) return;
+
+        video.muted = true;
+        video.setAttribute('muted', '');
+        video.setAttribute('playsinline', '');
+
+        const promise = video.play();
+        if (promise !== undefined) {
+            promise.catch(() => {
+                // Autoplay geblokkeerd, probeer opnieuw bij interactie
+                const retry = () => {
+                    video.play();
+                    window.removeEventListener('click', retry);
+                    window.removeEventListener('touchstart', retry);
+                };
+                window.addEventListener('click', retry);
+                window.addEventListener('touchstart', retry);
+            });
+        }
+    };
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', playVideo);
+    } else {
+        playVideo();
+    }
+})();
 
 // ====================================
 // Smooth Scroll
