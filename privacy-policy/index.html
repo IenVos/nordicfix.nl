@@ -2,148 +2,341 @@
 <html lang="nl">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Privacy Policy - NordicFix</title>
-    <link rel="icon" type="image/png" href="/images/nordicfix_favicon.png" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacyverklaring | NordicFix</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-bg: #fafafa;
+            --color-surface: #ffffff;
+            --color-text: #1a1a1a;
+            --color-text-muted: #6b7280;
+            --color-accent:  #f39c5a;
+            --color-accent-light: #dbeafe;
+            --color-border: #e5e7eb;
+            --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --max-width: 900px;
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2.5rem;
+            --spacing-xl: 4rem;
+        }
 
-    <!-- CSS Koppelingen -->
-    <link rel="stylesheet" href="/css/style.css" />
-    <link rel="stylesheet" href="/css/legal-simple.css" />
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet" />
+        body {
+            font-family: var(--font-body);
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--color-text);
+            background: var(--color-bg);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: var(--spacing-xl) var(--spacing-md);
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+            padding-bottom: var(--spacing-lg);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .logo-link {
+            display: inline-block;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .logo-link img {
+            height: 200px;
+            width: auto;
+            transition: opacity 0.2s ease;
+        }
+
+        .logo-link:hover img {
+            opacity: 0.8;
+        }
+
+        .header h1 {
+            font-family: var(--font-body);
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--color-text);
+            letter-spacing: -0.02em;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .last-updated {
+            font-size: 0.875rem;
+            color: var(--color-text-muted);
+        }
+
+        /* Content */
+        .content {
+            background: var(--color-surface);
+            border-radius: 12px;
+            padding: var(--spacing-lg);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0, 0, 0, 0.02);
+        }
+
+        .intro {
+            font-size: 1.1rem;
+            color: var(--color-text-muted);
+            margin-bottom: var(--spacing-lg);
+            padding-bottom: var(--spacing-lg);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .section {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .section:last-child {
+            margin-bottom: 0;
+        }
+
+        .section h2 {
+            font-family: var(--font-body);
+            font-size: 1.375rem;
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: var(--spacing-sm);
+            letter-spacing: -0.01em;
+        }
+
+        .section p {
+            margin-bottom: var(--spacing-sm);
+            color: var(--color-text);
+        }
+
+        .section p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section ul {
+            margin: var(--spacing-sm) 0;
+            padding-left: 1.5rem;
+        }
+
+        .section li {
+            margin-bottom: var(--spacing-xs);
+            color: var(--color-text);
+        }
+
+        .section li:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight-box {
+            background: var(--color-accent-light);
+            border-left: 3px solid var(--color-accent);
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-radius: 0 8px 8px 0;
+            margin: var(--spacing-md) 0;
+        }
+
+        .highlight-box p {
+            color: var(--color-text);
+            font-size: 0.95rem;
+        }
+
+        a {
+            color: var(--color-accent);
+            text-decoration: none;
+            transition: opacity 0.2s ease;
+        }
+
+        a:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: var(--spacing-xl);
+            padding-top: var(--spacing-lg);
+            border-top: 1px solid var(--color-border);
+            text-align: center;
+        }
+
+        .footer p {
+            font-size: 0.875rem;
+            color: var(--color-text-muted);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .footer a {
+            font-weight: 500;
+        }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            .container {
+                padding: var(--spacing-lg) var(--spacing-sm);
+            }
+
+            .header h1 {
+                font-size: 1.75rem;
+            }
+
+            .logo-link img {
+                height: 40px;
+            }
+
+            .content {
+                padding: var(--spacing-md);
+                border-radius: 8px;
+            }
+
+            .section h2 {
+                font-size: 1.25rem;
+            }
+        }
+    </style>
 </head>
 
-<body class="legal-page">
-
-    <!-- Simpele Header met alleen logo -->
-    <header class="simple-header">
-        <div class="container">
-            <a href="/" class="simple-logo">
-                <img src="/images/Nordicfix.logo_.png" alt="NordicFix">
+<body>
+    <div class="container">
+        <header class="header">
+            <a href="/" class="logo-link">
+                <img src="/images/Nordicfix.logo_.png" alt="NordicFix Logo">
             </a>
-        </div>
-    </header>
+            <h1>Privacyverklaring</h1>
+            <p class="last-updated">Laatst bijgewerkt: december 2025</p>
+        </header>
 
-    <!-- Privacy Content -->
-    <main class="legal-content">
-        <div class="container">
-            <div class="legal-wrapper">
-                <h1>Privacy Policy</h1>
-
-                <p class="legal-intro">
-                <p>
-                    <strong>LAAV</strong> (''wij''), gevestigd in Zweden, is verantwoordelijk voor de verwerking van persoonsgegevens
-                    zoals weergegeven in deze privacyverklaring.
-                </p>
-                
-                <p>
-                    LAAV acht zorgvuldige verwerking van persoonsgegevens van het grootste belang. Persoonsgegevens worden zorgvuldig
-                    verwerkt en beveiligd. Bij de verwerking houden we ons aan de vereisten van de Algemene Verordening
-                    Gegevensbescherming (de "AVG"). Deze Privacyverklaring zet uiteen hoe wij uw gegevens verzamelen en gebruiken, in
-                    overeenstemming met de AVG.
-                </p>
-                
-                <p>
-                    In deze Privacyverklaring leggen wij uit welke persoonsgegevens wij verzamelen en gebruiken, en met welk doel wij
-                    dat doen. Wij raden u aan deze Privacyverklaring zorgvuldig te lezen. Deze Privacyverklaring heeft betrekking op
-                    onze website, <a href="https://nordicfix.nl/" style="color: var(--accent-color);">https://nordicfix.nl/</a> en
-                    gerelateerde Diensten.
-                </p>
-                
-                <p style="margin-top: 30px; font-style: italic; color: #999;">
-                    Deze Privacyverklaring is voor het laatst aangepast op: 18-12-2025
-                </p>
-
-                <div class="legal-block">
-                    <h2>1. Gebruik van persoonsgegevens</h2>
-                    <p>Wanneer je gebruik maakt van onze diensten of contact met ons opneemt, vragen wij je om bepaalde
-                        persoonsgegevens te verstrekken. Deze gegevens worden opgeslagen en gebruikt voor:</p>
-                    <ul>
-                        <li>Het afhandelen van je aanvraag of vraag</li>
-                        <li>Het leveren van onze diensten</li>
-                        <li>Het versturen van nieuws en updates (alleen met toestemming)</li>
-                        <li>Het verbeteren van onze dienstverlening</li>
-                    </ul>
-                </div>
-
-                <div class="legal-block">
-                    <h2>2. Welke gegevens verzamelen we?</h2>
-                    <p>We kunnen de volgende persoonsgegevens van je verzamelen:</p>
-                    <ul>
-                        <li>Voor- en achternaam</li>
-                        <li>E-mailadres</li>
-                        <li>Bedrijfsnaam (indien van toepassing)</li>
-                        <li>Telefoonnummer (indien opgegeven)</li>
-                        <li>Informatie over je gebruik van onze website (via cookies)</li>
-                    </ul>
-                </div>
-
-                <div class="legal-block">
-                    <h2>3. Cookies</h2>
-                    <p>NordicFix maakt gebruik van cookies op de website. Cookies zijn kleine tekstbestanden die op jouw
-                        computer, tablet of mobiele telefoon worden geplaatst wanneer je onze website bezoekt. We
-                        gebruiken cookies voor:</p>
-                    <ul>
-                        <li><strong>Functionele cookies:</strong> Om de website goed te laten werken</li>
-                        <li><strong>Analytische cookies:</strong> Om te begrijpen hoe bezoekers de website gebruiken
-                            (alleen met toestemming)</li>
-                    </ul>
-                    <p>Je kunt cookies weigeren of verwijderen via je browserinstellingen.</p>
-                </div>
-
-                <div class="legal-block">
-                    <h2>4. Delen met derden</h2>
-                    <p>NordicFix verkoopt je gegevens nooit aan derden. We kunnen je gegevens alleen delen met externe
-                        partijen wanneer dit noodzakelijk is voor het uitvoeren van onze diensten.</p>
-                </div>
-
-                <div class="legal-block">
-                    <h2>5. Beveiliging</h2>
-                    <p>NordicFix neemt passende technische en organisatorische maatregelen om je persoonsgegevens te
-                        beschermen tegen verlies of onrechtmatige verwerking.</p>
-                </div>
-
-                <div class="legal-block">
-                    <h2>6. Bewaartermijn</h2>
-                    <p>We bewaren je persoonsgegevens niet langer dan noodzakelijk voor de doeleinden waarvoor ze zijn
-                        verzameld.</p>
-                </div>
-
-                <div class="legal-block">
-                    <h2>7. Jouw rechten</h2>
-                    <p>Je hebt het recht op inzage, correctie of verwijdering van je gegevens. Neem hiervoor contact op
-                        via <a href="mailto:info@nordicfix.nl">info@nordicfix.nl</a>.</p>
-                </div>
-
-                <div class="legal-block">
-                    <h2>8. Wijzigingen</h2>
-                    <p>NordicFix behoudt zich het recht voor om wijzigingen aan te brengen in deze privacyverklaring.
-                    </p>
-                </div>
-
-                <div class="legal-block">
-                    <h2>9. Vragen of klachten?</h2>
-                    <p>
-                        <strong>NordicFix</strong><br>
-                        E-mail: <a href="mailto:info@nordicfix.nl">info@nordicfix.nl</a>
-                    </p>
-                </div>
+        <main class="content">
+            <div class="intro">
+                <p>NordicFix ("wij"), gevestigd in Zweden, is verantwoordelijk voor de verwerking van persoonsgegevens
+                    zoals weergegeven in deze privacyverklaring. Wij achten zorgvuldige verwerking van persoonsgegevens
+                    van het grootste belang.</p>
             </div>
-        </div>
-    </main>
 
-    <!-- Simpele Footer -->
-    <footer class="simple-footer" style="padding: 40px 0; text-align: center;">
-        <div class="container">
-            <p>&copy; 2025 NordicFix. <a href="/" style="color: white; margin-left: 15px;">Terug naar Home</a></p>
-        </div>
-    </footer>
+            <section class="section">
+                <h2>Over deze verklaring</h2>
+                <p>Persoonsgegevens worden door ons zorgvuldig verwerkt en beveiligd. Bij de verwerking houden we ons
+                    aan de vereisten van de Algemene Verordening Gegevensbescherming (AVG). Deze Privacyverklaring zet
+                    uiteen hoe wij uw gegevens verzamelen en gebruiken, in overeenstemming met de AVG.</p>
+                <p>Deze Privacyverklaring heeft betrekking op onze website <a
+                        href="https://nordicfix.nl">https://nordicfix.nl</a> en gerelateerde diensten.</p>
+            </section>
 
-    <script src="/js/main.js"></script>
+            <section class="section">
+                <h2>Gebruik van persoonsgegevens</h2>
+                <p>Als u gebruik maakt van websites en gerelateerde diensten die NordicFix aanbiedt, dan kunt u
+                    persoonsgegevens met ons delen. Wij verzamelen en maken gebruik van persoonsgegevens die u, of uw
+                    bedrijf, direct met ons deelt. Wij zullen de persoonsgegevens niet voor andere doeleinden gebruiken
+                    dan beschreven in deze verklaring, tenzij u daar vooraf toestemming voor heeft gegeven.</p>
+            </section>
+
+            <section class="section">
+                <h2>Welke gegevens verzamelen wij</h2>
+                <p>Wanneer u gebruik maakt van onze diensten, kunnen we de volgende gegevens verzamelen:</p>
+                <ul>
+                    <li>Voor- en achternaam</li>
+                    <li>E-mailadres</li>
+                    <li>Bedrijfsnaam en functie</li>
+                    <li>Telefoonnummer</li>
+                    <li>Overige persoonsgegevens die u actief verstrekt, bijvoorbeeld via correspondentie of contact via
+                        onze website</li>
+                    <li>Gegevens over uw activiteiten op onze website</li>
+                </ul>
+            </section>
+
+            <section class="section">
+                <h2>Doeleinden van verwerking</h2>
+                <p>Wij verwerken uw persoonsgegevens voor de volgende doeleinden:</p>
+                <ul>
+                    <li>Het verlenen van onze diensten op het gebied van klantenservice, webontwikkeling, SEO en
+                        bedrijfsconsulting</li>
+                    <li>Contact met u opnemen naar aanleiding van uw aanvraag</li>
+                    <li>U te informeren over wijzigingen van onze diensten</li>
+                    <li>Het verbeteren van onze website en dienstverlening</li>
+                </ul>
+                <div class="highlight-box">
+                    <p>Wij verzamelen uw persoonsgegevens op basis van gerechtvaardigde belangen of uw toestemming, die
+                        u te allen tijde kunt intrekken.</p>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>Bewaartermijn</h2>
+                <p>Wij bewaren uw persoonsgegevens zo lang als nodig is ter realisering van de doeleinden van deze
+                    Privacyverklaring. In het algemeen bewaren we persoonsgegevens van onze websitebezoekers voor
+                    maximaal 12 maanden, tenzij een langere bewaring noodzakelijk is voor de uitvoering van onze
+                    diensten.</p>
+            </section>
+
+            <section class="section">
+                <h2>Uw rechten</h2>
+                <p>Onder de AVG heeft u de volgende rechten met betrekking tot uw persoonsgegevens:</p>
+                <ul>
+                    <li><strong>Recht op inzage:</strong> U heeft het recht om te weten welke gegevens wij over u
+                        verwerken</li>
+                    <li><strong>Recht op rectificatie:</strong> U kunt ons vragen onjuiste gegevens te corrigeren</li>
+                    <li><strong>Recht op verwijdering:</strong> U kunt ons vragen uw gegevens te verwijderen</li>
+                    <li><strong>Recht van bezwaar:</strong> U kunt bezwaar maken tegen de verwerking van uw gegevens
+                    </li>
+                    <li><strong>Recht op overdraagbaarheid:</strong> U kunt uw gegevens opvragen in een gangbaar formaat
+                    </li>
+                </ul>
+                <p>Neem contact met ons op om een van deze rechten uit te oefenen. Wij reageren binnen de wettelijke
+                    termijn. Mocht u niet tevreden zijn met ons antwoord, dan kunt u een klacht indienen bij de
+                    betreffende toezichthouder.</p>
+            </section>
+
+            <section class="section">
+                <h2>Delen met derden</h2>
+                <p>Wij delen uw informatie niet met derden zonder uw toestemming, tenzij dit noodzakelijk is voor de
+                    uitvoering van de overeenkomst die u met ons heeft afgesloten, of wanneer dit een wettelijke
+                    verplichting is.</p>
+            </section>
+
+            <section class="section">
+                <h2>Doorgifte buiten de EER</h2>
+                <p>Ter realisering van de doeleinden beschreven in deze Privacyverklaring kunnen wij uw gegevens buiten
+                    de Europese Economische Ruimte (EER) overdragen. Wanneer dit het geval is, nemen wij passende
+                    maatregelen om ervoor te zorgen dat uw persoonsgegevens adequaat worden beschermd, zoals het gebruik
+                    van standaard contractbepalingen of andere goedgekeurde mechanismen.</p>
+            </section>
+
+            <section class="section">
+                <h2>Cookies</h2>
+                <p>Onze website maakt gebruik van cookies om u een optimale gebruikservaring te bieden. Wij plaatsen
+                    functionele cookies die noodzakelijk zijn voor het functioneren van de website. Daarnaast gebruiken
+                    wij analytische cookies om inzicht te krijgen in het gebruik van onze website, zodat wij deze kunnen
+                    verbeteren.</p>
+                <p>Uw IP-adres kan worden opgeslagen in logbestanden voor beveiligings- en beheerdoeleinden. Wij
+                    gebruiken uw IP-adres niet om uw onlinegedrag te volgen of te registreren.</p>
+                <p>U kunt zich afmelden voor cookies door uw browserinstellingen aan te passen. Houd er rekening mee dat
+                    het uitschakelen van cookies de functionaliteit van onze website kan beïnvloeden.</p>
+            </section>
+
+            <section class="section">
+                <h2>Contact</h2>
+                <p>Heeft u vragen over deze privacyverklaring of over hoe wij met uw gegevens omgaan? Neem dan contact
+                    met ons op via <a href="mailto:info@nordicfix.nl">info@nordicfix.nl</a>.</p>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2025 NordicFix. Alle rechten voorbehouden.</p>
+            <p><a href="https://nordicfix.nl">Terug naar de website</a></p>
+        </footer>
+    </div>
 </body>
 
 </html>

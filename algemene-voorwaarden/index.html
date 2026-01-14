@@ -1,237 +1,643 @@
 <!DOCTYPE html>
 <html lang="nl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Algemene Voorwaarden van NordicFix - De voorwaarden waaronder wij onze diensten leveren.">
-    <title>Algemene Voorwaarden - NordicFix</title>
-    <link rel="icon" type="image/png" href="images/nordicfix_favicon.png">
-    <link rel="stylesheet" href="css/style.css">
+    <title>Algemene Voorwaarden | NordicFix</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-bg: #fafafa;
+            --color-surface: #ffffff;
+            --color-text: #1a1a1a;
+            --color-text-muted: #6b7280;
+            --color-accent: #f39c5a;
+            --color-accent-light: #dbeafe;
+            --color-border: #e5e7eb;
+            --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --max-width: 900px;
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2.5rem;
+            --spacing-xl: 4rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--color-text);
+            background: var(--color-bg);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: var(--spacing-xl) var(--spacing-md);
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+            padding-bottom: var(--spacing-lg);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .logo-link {
+            display: inline-block;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .logo-link img {
+            height: 200px;
+            width: auto;
+            transition: opacity 0.2s ease;
+        }
+
+        .logo-link:hover img {
+            opacity: 0.8;
+        }
+
+        .header h1 {
+            font-family: var(--font-body);
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--color-text);
+            letter-spacing: -0.02em;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .last-updated {
+            font-size: 0.875rem;
+            color: var(--color-text-muted);
+        }
+
+        /* Content */
+        .content {
+            background: var(--color-surface);
+            border-radius: 12px;
+            padding: var(--spacing-lg);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0, 0, 0, 0.02);
+        }
+
+        .intro {
+            font-size: 1.1rem;
+            color: var(--color-text-muted);
+            margin-bottom: var(--spacing-lg);
+            padding-bottom: var(--spacing-lg);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        /* Table of Contents */
+        .toc {
+            background: var(--color-bg);
+            border-radius: 8px;
+            padding: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .toc h2 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+            color: var(--color-text);
+        }
+
+        .toc ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            columns: 2;
+            column-gap: var(--spacing-lg);
+        }
+
+        .toc li {
+            margin-bottom: var(--spacing-xs);
+            break-inside: avoid;
+        }
+
+        .toc a {
+            color: var(--color-accent);
+            text-decoration: none;
+            font-size: 0.925rem;
+        }
+
+        .toc a:hover {
+            text-decoration: underline;
+        }
+
+        /* Sections */
+        .section {
+            margin-bottom: var(--spacing-lg);
+            padding-bottom: var(--spacing-lg);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .section:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .section h2 {
+            font-family: var(--font-body);
+            font-size: 1.375rem;
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: var(--spacing-sm);
+            letter-spacing: -0.01em;
+        }
+
+        .section h3 {
+            font-family: var(--font-body);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--color-text);
+            margin-top: var(--spacing-md);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .section p {
+            margin-bottom: var(--spacing-sm);
+            color: var(--color-text);
+        }
+
+        .section p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section ol {
+            margin: var(--spacing-sm) 0;
+            padding-left: 1.5rem;
+        }
+
+        .section ol ol {
+            list-style-type: lower-alpha;
+            margin: var(--spacing-xs) 0;
+        }
+
+        .section li {
+            margin-bottom: var(--spacing-xs);
+            color: var(--color-text);
+        }
+
+        .section li:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight-box {
+            background: var(--color-accent-light);
+            border-left: 3px solid var(--color-accent);
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-radius: 0 8px 8px 0;
+            margin: var(--spacing-md) 0;
+        }
+
+        .highlight-box p {
+            color: var(--color-text);
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        .identity-box {
+            background: var(--color-bg);
+            border-radius: 8px;
+            padding: var(--spacing-md);
+            margin: var(--spacing-sm) 0;
+        }
+
+        .identity-box p {
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .identity-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        a {
+            color: var(--color-accent);
+            text-decoration: none;
+            transition: opacity 0.2s ease;
+        }
+
+        a:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: var(--spacing-xl);
+            padding-top: var(--spacing-lg);
+            border-top: 1px solid var(--color-border);
+            text-align: center;
+        }
+
+        .footer p {
+            font-size: 0.875rem;
+            color: var(--color-text-muted);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .footer a {
+            font-weight: 500;
+        }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            .container {
+                padding: var(--spacing-lg) var(--spacing-sm);
+            }
+
+            .header h1 {
+                font-size: 1.75rem;
+            }
+
+            .logo-link img {
+                height: 40px;
+            }
+
+            .content {
+                padding: var(--spacing-md);
+                border-radius: 8px;
+            }
+
+            .section h2 {
+                font-size: 1.25rem;
+            }
+
+            .toc ul {
+                columns: 1;
+            }
+        }
+    </style>
 </head>
-<body class="legal-page">
-    <!-- Video Background -->
-    <div class="video-background">
-        <video autoplay muted loop playsinline preload="metadata">
-            <source src="videos/noorderlicht.mp4" type="video/mp4">
-        </video>
-    </div>
 
-    <!-- Navigation -->
-    <nav class="main-nav">
-        <div class="container">
-            <div class="nav-content">
-                <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                    <li><a href="over.html">Over</a></li>
-                    <li><a href="contact.html" class="cta-button">Contact</a></li>
-                </ul>
-                <button class="mobile-menu-toggle" aria-label="Menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Page Hero -->
-    <section class="page-hero">
-        <div class="container">
+<body>
+    <div class="container">
+        <header class="header">
+            <a href="/" class="logo-link">
+                <img src="/images/Nordicfix.logo_.png" alt="NordicFix Logo">
+            </a>
             <h1>Algemene Voorwaarden</h1>
-            <p class="hero-subtitle">De voorwaarden waaronder NordicFix diensten levert</p>
-        </div>
-    </section>
+            <p class="last-updated">Laatst bijgewerkt: december 2025</p>
+        </header>
 
-    <!-- Terms Content -->
-    <section class="legal-content">
-        <div class="container">
-            <div class="legal-wrapper">
-                <p class="legal-intro">
-                    Deze algemene voorwaarden zijn van toepassing op alle aanbiedingen, offertes en overeenkomsten tussen NordicFix en de opdrachtgever. Deze voorwaarden zijn voor het laatst aangepast op 18 december 2024.
-                </p>
-
-                <div class="legal-block">
-                    <h2>Artikel 1 - Definities</h2>
-                    <ul>
-                        <li><strong>NordicFix:</strong> De opdrachtnemer, gevestigd in Zweden</li>
-                        <li><strong>Opdrachtgever:</strong> De natuurlijke of rechtspersoon die een opdracht verstrekt aan NordicFix</li>
-                        <li><strong>Diensten:</strong> Alle door NordicFix aangeboden diensten zoals customer service, website development, SEO optimalisatie, etc.</li>
-                        <li><strong>Overeenkomst:</strong> De tussen NordicFix en opdrachtgever gesloten overeenkomst</li>
-                    </ul>
-                </div>
-
-                <div class="legal-block">
-                    <h2>Artikel 2 - Toepasselijkheid</h2>
-                    <p>Deze algemene voorwaarden zijn van toepassing op alle aanbiedingen, offertes en overeenkomsten tussen NordicFix en de opdrachtgever.</p>
-                    <p>Afwijkingen op deze voorwaarden zijn slechts geldig indien deze uitdrukkelijk schriftelijk zijn overeengekomen.</p>
-                </div>
-
-                <div class="legal-block">
-                    <h2>Artikel 3 - Offerte en totstandkoming overeenkomst</h2>
-                    <ul>
-                        <li>Alle offertes zijn vrijblijvend, tenzij anders aangegeven</li>
-                        <li>Een overeenkomst komt tot stand na schriftelijke bevestiging door NordicFix of bij aanvang van de werkzaamheden</li>
-                        <li>Opgegeven prijzen zijn exclusief BTW, tenzij anders vermeld</li>
-                        <li>Wijzigingen in de opdracht kunnen gevolgen hebben voor de overeengekomen prijs en doorlooptijd</li>
-                    </ul>
-                </div>
-
-                <div class="legal-block">
-                    <h2>Artikel 4 - Uitvoering van de overeenkomst</h2>
-                    <ul>
-                        <li>NordicFix zal de overeenkomst naar beste inzicht en vermogen uitvoeren</li>
-                        <li>NordicFix heeft het recht om werkzaamheden te laten verrichten door derden</li>
-                        <li>De opdrachtgever draagt er zorg voor dat alle gegevens die noodzakelijk zijn voor de uitvoering tijdig worden aangeleverd</li>
-                        <li>Vertraging in aanlevering kan gevolgen hebben voor doorlooptijd en kosten</li>
-                    </ul>
-                </div>
-
-                <div class="legal-block">
-                    <h2>Artikel 5 - Doorlooptijd</h2>
-                    <ul>
-                        <li>Opgegeven doorlooptijden zijn indicatief en niet bindend, tenzij uitdrukkelijk anders overeengekomen</li>
-                        <li>Overschrijding van doorlooptijden geeft de opdrachtgever geen recht op schadevergoeding of ontbinding</li>
-                        <li>NordicFix zal de opdrachtgever tijdig informeren bij vertraging</li>
-                    </ul>
-                </div>
-
-                <div class="legal-block">
-                    <h2>Artikel 6 - Prijzen en betaling</h2>
-                    <ul>
-                        <li>Alle prijzen zijn in euro's en exclusief BTW, tenzij anders vermeld</li>
-                        <li>Betaling dient te geschieden binnen 14 dagen na factuurdatum</li>
-                        <li>Bij niet-tijdige betaling is de opdrachtgever in verzuim zonder dat ingebrekestelling is vereist</li>
-                        <li>Bij niet-tijdige betaling is NordicFix gerechtigd wettelijke rente te berekenen</li>
-                        <li>NordicFix behoudt zich het recht voor om bij aanvang van een project een vooruitbetaling te vragen</li>
-                    </ul>
-                </div>
-
-                <div class="legal-block">
-                    <h2>Artikel 7 - Meerwerk</h2>
-                    <ul>
-                        <li>Werkzaamheden die buiten de opdracht vallen worden beschouwd als meerwerk</li>
-                        <li>Meerwerk wordt apart gefactureerd op basis van nacalculatie</li>
-                        <li>NordicFix zal de opdrachtgever tijdig informeren over meerwerk</li>
-                    </ul>
-                </div>
-
-                <div class="legal-block">
-                    <h2>Artikel 8 - Intellectueel eigendom</h2>
-                    <ul>
-                        <li>Alle intellectuele eigendomsrechten op het geleverde werk berusten bij NordicFix, tenzij anders overeengekomen</li>
-                        <li>Na volledige betaling verkrijgt de opdrachtgever een gebruiksrecht op het geleverde werk</li>
-                        <li>Het is niet toegestaan om zonder toestemming van NordicFix het werk te verveelvoudigen of te verspreiden</li>
-                    </ul>
-                </div>
-
-                <div class="legal-block">
-                    <h2>Artikel 9 - Geheimhouding</h2>
-                    <ul>
-                        <li>Beide partijen zijn verplicht tot geheimhouding van vertrouwelijke informatie</li>
-                        <li>NordicFix zal zonder toestemming geen bedrijfsgevoelige informatie delen met derden</li>
-                    </ul>
-                </div>
-
-                <div class="legal-block">
-                    <h2>Artikel 10 - Aansprakelijkheid</h2>
-                    <ul>
-                        <li>NordicFix is alleen aansprakelijk voor directe schade die het gevolg is van opzet of grove schuld</li>
-                        <li>Aansprakelijkheid is in alle gevallen beperkt tot het factuurbedrag van de betreffende opdracht</li>
-                        <li>NordicFix is niet aansprakelijk voor indirecte schade, zoals gevolgschade, gederfde winst of gemiste besparingen</li>
-                        <li>De opdrachtgever vrijwaart NordicFix voor aanspraken van derden</li>
-                    </ul>
-                </div>
-
-                <div class="legal-block">
-                    <h2>Artikel 11 - Overmacht</h2>
-                    <ul>
-                        <li>NordicFix is niet gehouden tot het nakomen van enige verplichting indien zij daartoe verhinderd wordt door overmacht</li>
-                        <li>Onder overmacht wordt verstaan: ziekte, stroomuitval, internet- of computerstoringen, etc.</li>
-                        <li>Bij overmacht heeft NordicFix het recht de overeenkomst te ontbinden of de uitvoering op te schorten</li>
-                    </ul>
-                </div>
-
-                <div class="legal-block">
-                    <h2>Artikel 12 - Ontbinding</h2>
-                    <ul>
-                        <li>Beide partijen kunnen de overeenkomst schriftelijk ontbinden bij niet-nakoming door de andere partij</li>
-                        <li>Bij ontbinding door de opdrachtgever is NordicFix gerechtigd tot vergoeding van reeds verrichte werkzaamheden</li>
-                        <li>Bij ontbinding door NordicFix wegens wanprestatie van de opdrachtgever, blijft de betalingsverplichting bestaan</li>
-                    </ul>
-                </div>
-
-                <div class="legal-block">
-                    <h2>Artikel 13 - Klachten</h2>
-                    <ul>
-                        <li>Klachten dienen binnen 14 dagen na ontdekking schriftelijk te worden gemeld</li>
-                        <li>Na deze termijn wordt de opdrachtgever geacht akkoord te zijn met het geleverde werk</li>
-                        <li>NordicFix zal klachten serieus behandelen en waar mogelijk verhelpen</li>
-                    </ul>
-                </div>
-
-                <div class="legal-block">
-                    <h2>Artikel 14 - Toepasselijk recht</h2>
-                    <ul>
-                        <li>Op alle overeenkomsten is Nederlands recht van toepassing</li>
-                        <li>Geschillen worden bij voorkeur in onderling overleg opgelost</li>
-                        <li>Bij het niet oplossen van geschillen is de bevoegde rechter in Nederland bevoegd</li>
-                    </ul>
-                </div>
-
-                <div class="legal-block">
-                    <h2>Contact</h2>
-                    <p>Heb je vragen over deze algemene voorwaarden? Neem dan contact met ons op:</p>
-                    <p>
-                        <strong>NordicFix</strong><br>
-                        E-mail: <a href="mailto:info@nordicfix.nl">info@nordicfix.nl</a>
-                    </p>
-                </div>
+        <main class="content">
+            <div class="intro">
+                <p>Deze algemene voorwaarden zijn van toepassing op alle diensten die worden aangeboden door NordicFix,
+                    onderdeel van LAAV, gevestigd in Zweden. Door gebruik te maken van onze diensten gaat u akkoord met
+                    deze voorwaarden.</p>
             </div>
-        </div>
-    </section>
 
-    <!-- Footer -->
-    <footer class="main-footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <img src="images/Nordicfix.logo_.png" alt="NordicFix" class="footer-logo">
-                </div>
-                <div class="footer-column">
-                    <h4>Navigatie</h4>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="blog.html">Blog</a></li>
-                        <li><a href="over.html">Over</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h4>Juridisch</h4>
-                    <ul>
-                        <li><a href="privacy.html">Privacy Policy</a></li>
-                        <li><a href="voorwaarden.html">Algemene Voorwaarden</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h4>Contact</h4>
-                    <ul>
-                        <li><a href="mailto:info@nordicfix.nl">info@nordicfix.nl</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 NordicFix.</p>
-            </div>
-        </div>
-    </footer>
+            <nav class="toc">
+                <h2>Inhoudsopgave</h2>
+                <ul>
+                    <li><a href="#artikel-1">Artikel 1 - Definities</a></li>
+                    <li><a href="#artikel-2">Artikel 2 - Identiteit</a></li>
+                    <li><a href="#artikel-3">Artikel 3 - Toepasselijkheid</a></li>
+                    <li><a href="#artikel-4">Artikel 4 - Offertes en aanbiedingen</a></li>
+                    <li><a href="#artikel-5">Artikel 5 - Overeenkomst</a></li>
+                    <li><a href="#artikel-6">Artikel 6 - Uitvoering diensten</a></li>
+                    <li><a href="#artikel-7">Artikel 7 - Verplichtingen opdrachtgever</a></li>
+                    <li><a href="#artikel-8">Artikel 8 - Wijzigingen</a></li>
+                    <li><a href="#artikel-9">Artikel 9 - Prijzen en betaling</a></li>
+                    <li><a href="#artikel-10">Artikel 10 - Intellectueel eigendom</a></li>
+                    <li><a href="#artikel-11">Artikel 11 - Geheimhouding</a></li>
+                    <li><a href="#artikel-12">Artikel 12 - Aansprakelijkheid</a></li>
+                    <li><a href="#artikel-13">Artikel 13 - Overmacht</a></li>
+                    <li><a href="#artikel-14">Artikel 14 - Opzegging en ontbinding</a></li>
+                    <li><a href="#artikel-15">Artikel 15 - Klachten</a></li>
+                    <li><a href="#artikel-16">Artikel 16 - Toepasselijk recht</a></li>
+                </ul>
+            </nav>
 
-    <script src="js/main.js"></script>
+            <section class="section" id="artikel-1">
+                <h2>Artikel 1 - Definities</h2>
+                <p>In deze algemene voorwaarden wordt verstaan onder:</p>
+                <ol>
+                    <li><strong>Opdrachtnemer:</strong> NordicFix, onderdeel van LAAV, gevestigd in Zweden, die diensten
+                        aanbiedt op het gebied van klantenservice, webontwikkeling, SEO en bedrijfsconsulting.</li>
+                    <li><strong>De opdrachtgever:</strong> de natuurlijke persoon of rechtspersoon die met opdrachtnemer
+                        een overeenkomst aangaat.</li>
+                    <li><strong>Diensten:</strong> alle werkzaamheden waartoe opdracht is gegeven, of die door
+                        opdrachtnemer uit andere hoofde worden verricht, waaronder maar niet beperkt tot:
+                        klantenservice, website-ontwikkeling, zoekmachineoptimalisatie (SEO), tool-integraties en
+                        bedrijfsconsulting.</li>
+                    <li><strong>Overeenkomst:</strong> elke afspraak tussen de opdrachtgever en opdrachtnemer tot het
+                        verlenen van diensten.</li>
+                    <li><strong>Schriftelijk:</strong> per brief, e-mail of enige andere wijze van communicatie die met
+                        het oog op de stand der techniek en de in het maatschappelijk verkeer geldende opvattingen
+                        hiermee gelijk kan worden gesteld.</li>
+                </ol>
+            </section>
+
+            <section class="section" id="artikel-2">
+                <h2>Artikel 2 - Identiteit van de ondernemer</h2>
+                <div class="identity-box">
+                    <p><strong>Handelsnaam:</strong> NordicFix</p>
+                    <p><strong>Onderdeel van:</strong> LAAV</p>
+                    <p><strong>Vestigingsland:</strong> Zweden</p>
+                    <p><strong>Organisatienummer:</strong> 19671123-0422</p>
+                    <p><strong>E-mailadres:</strong> <a href="mailto:info@nordicfix.nl">info@nordicfix.nl</a></p>
+                    <p><strong>Website:</strong> <a href="https://nordicfix.nl">https://nordicfix.nl</a></p>
+                </div>
+            </section>
+
+            <section class="section" id="artikel-3">
+                <h2>Artikel 3 - Toepasselijkheid</h2>
+                <ol>
+                    <li>Deze algemene voorwaarden zijn van toepassing op elk aanbod van opdrachtnemer en op elke tot
+                        stand gekomen overeenkomst tussen opdrachtnemer en opdrachtgever.</li>
+                    <li>Voordat de overeenkomst wordt gesloten, wordt de tekst van deze algemene voorwaarden aan de
+                        opdrachtgever beschikbaar gesteld via de website van opdrachtnemer.</li>
+                    <li>Afwijkingen van deze algemene voorwaarden zijn slechts geldig indien deze uitdrukkelijk
+                        schriftelijk zijn overeengekomen.</li>
+                    <li>Indien één of meerdere bepalingen in deze algemene voorwaarden nietig zijn of vernietigd worden,
+                        blijven de overige bepalingen volledig van toepassing.</li>
+                    <li>De toepasselijkheid van eventuele inkoop- of andere voorwaarden van opdrachtgever wordt
+                        uitdrukkelijk van de hand gewezen.</li>
+                </ol>
+            </section>
+
+            <section class="section" id="artikel-4">
+                <h2>Artikel 4 - Offertes en aanbiedingen</h2>
+                <ol>
+                    <li>Alle offertes en aanbiedingen van opdrachtnemer zijn vrijblijvend, tenzij in de offerte een
+                        termijn voor aanvaarding is gesteld.</li>
+                    <li>Opdrachtnemer kan niet aan zijn offertes worden gehouden indien de opdrachtgever redelijkerwijs
+                        kan begrijpen dat de offerte, of een onderdeel daarvan, een kennelijke vergissing of
+                        verschrijving bevat.</li>
+                    <li>De in een offerte vermelde prijzen zijn exclusief btw en andere heffingen van overheidswege,
+                        tenzij anders aangegeven.</li>
+                    <li>Een samengestelde prijsopgave verplicht opdrachtnemer niet tot het verrichten van een gedeelte
+                        van de opdracht tegen een overeenkomstig deel van de opgegeven prijs.</li>
+                    <li>Offertes gelden niet automatisch voor toekomstige opdrachten.</li>
+                </ol>
+            </section>
+
+            <section class="section" id="artikel-5">
+                <h2>Artikel 5 - Totstandkoming van de overeenkomst</h2>
+                <ol>
+                    <li>De overeenkomst komt tot stand op het moment dat de opdrachtgever de offerte of het aanbod van
+                        opdrachtnemer schriftelijk aanvaardt, of op het moment dat opdrachtnemer met de uitvoering van
+                        de werkzaamheden begint op verzoek van opdrachtgever.</li>
+                    <li>Indien de aanvaarding afwijkt van het in de offerte opgenomen aanbod, is opdrachtnemer daaraan
+                        niet gebonden. De overeenkomst komt dan niet tot stand, tenzij opdrachtnemer schriftelijk anders
+                        aangeeft.</li>
+                    <li>Opdrachtnemer behoudt zich het recht voor om een opdracht zonder opgave van redenen te weigeren.
+                    </li>
+                </ol>
+            </section>
+
+            <section class="section" id="artikel-6">
+                <h2>Artikel 6 - Uitvoering van de diensten</h2>
+                <ol>
+                    <li>Opdrachtnemer zal de overeenkomst naar beste inzicht en vermogen en overeenkomstig de eisen van
+                        goed vakmanschap uitvoeren.</li>
+                    <li>Opdrachtnemer heeft het recht bepaalde werkzaamheden te laten verrichten door derden, indien dit
+                        naar zijn oordeel wenselijk is voor een goede uitvoering van de overeenkomst.</li>
+                    <li>De uitvoering van de overeenkomst geschiedt op basis van een inspanningsverbintenis, tenzij
+                        uitdrukkelijk schriftelijk anders is overeengekomen.</li>
+                    <li>Indien en voor zover een goede uitvoering van de overeenkomst dit vereist, heeft opdrachtnemer
+                        het recht bepaalde werkzaamheden anders uit te voeren dan oorspronkelijk overeengekomen, mits de
+                        essentie van de overeenkomst niet wordt aangetast.</li>
+                    <li>Opgegeven termijnen zijn indicatief en gelden niet als fatale termijnen, tenzij uitdrukkelijk
+                        schriftelijk anders is overeengekomen.</li>
+                </ol>
+            </section>
+
+            <section class="section" id="artikel-7">
+                <h2>Artikel 7 - Verplichtingen van de opdrachtgever</h2>
+                <ol>
+                    <li>Opdrachtgever draagt er zorg voor dat alle gegevens, waarvan opdrachtnemer aangeeft dat deze
+                        noodzakelijk zijn of waarvan opdrachtgever redelijkerwijs behoort te begrijpen dat deze
+                        noodzakelijk zijn voor het uitvoeren van de overeenkomst, tijdig aan opdrachtnemer worden
+                        verstrekt.</li>
+                    <li>Opdrachtgever staat in voor de juistheid, volledigheid en betrouwbaarheid van de aan
+                        opdrachtnemer verstrekte gegevens en informatie.</li>
+                    <li>Indien de voor de uitvoering van de overeenkomst benodigde gegevens niet tijdig aan
+                        opdrachtnemer zijn verstrekt, heeft opdrachtnemer het recht de uitvoering van de overeenkomst op
+                        te schorten en/of de uit de vertraging voortvloeiende extra kosten aan opdrachtgever in rekening
+                        te brengen.</li>
+                    <li>Opdrachtgever is verantwoordelijk voor het tijdig verlenen van toegang tot systemen, platforms
+                        en accounts die nodig zijn voor de uitvoering van de diensten.</li>
+                    <li>Opdrachtgever vrijwaart opdrachtnemer voor aanspraken van derden die voortvloeien uit het
+                        gebruik van door opdrachtgever aangeleverde gegevens of materialen.</li>
+                </ol>
+            </section>
+
+            <section class="section" id="artikel-8">
+                <h2>Artikel 8 - Wijziging van de overeenkomst</h2>
+                <ol>
+                    <li>Indien tijdens de uitvoering van de overeenkomst blijkt dat het voor een behoorlijke uitvoering
+                        noodzakelijk is om de te verrichten werkzaamheden te wijzigen of aan te vullen, zullen partijen
+                        tijdig en in onderling overleg de overeenkomst dienovereenkomstig aanpassen.</li>
+                    <li>Indien partijen overeenkomen dat de overeenkomst wordt gewijzigd of aangevuld, kan het tijdstip
+                        van voltooiing van de uitvoering daardoor worden beïnvloed. Opdrachtnemer zal de opdrachtgever
+                        zo spoedig mogelijk hiervan op de hoogte stellen.</li>
+                    <li>Indien de wijziging of aanvulling op de overeenkomst financiële en/of kwalitatieve consequenties
+                        heeft, zal opdrachtnemer de opdrachtgever hierover vooraf informeren.</li>
+                    <li>Indien een vast honorarium is overeengekomen, zal opdrachtnemer aangeven in hoeverre de
+                        wijziging of aanvulling van de overeenkomst een overschrijding van dit honorarium tot gevolg
+                        heeft.</li>
+                </ol>
+            </section>
+
+            <section class="section" id="artikel-9">
+                <h2>Artikel 9 - Prijzen en betaling</h2>
+                <ol>
+                    <li>Alle prijzen zijn in euro's en exclusief btw, tenzij uitdrukkelijk anders vermeld.</li>
+                    <li>Opdrachtnemer is gerechtigd de overeengekomen prijzen jaarlijks aan te passen. Prijswijzigingen
+                        worden minimaal één maand voor inwerkingtreding schriftelijk aan opdrachtgever medegedeeld.</li>
+                    <li>Betaling dient te geschieden binnen 7 dagen na factuurdatum, tenzij schriftelijk anders is
+                        overeengekomen. Voor Nederlandse zakelijke opdrachtgevers (B2B) geldt de verleggingsregeling:
+                        opdrachtgever is zelf verantwoordelijk voor afdracht van btw.</li>
+                    <li>Bij niet-tijdige betaling is opdrachtgever van rechtswege in verzuim en is opdrachtnemer
+                        gerechtigd wettelijke rente in rekening te brengen.</li>
+                    <li>Alle redelijke kosten ter verkrijging van voldoening buiten rechte komen voor rekening van
+                        opdrachtgever.</li>
+                    <li>In geval van liquidatie, faillissement, beslag of surseance van betaling van opdrachtgever zijn
+                        de vorderingen van opdrachtnemer onmiddellijk opeisbaar.</li>
+                </ol>
+                <div class="highlight-box">
+                    <p>Bij grotere projecten kan opdrachtnemer vooraf een aanbetaling vragen van maximaal 50% van het
+                        totale offertebedrag.</p>
+                </div>
+            </section>
+
+            <section class="section" id="artikel-10">
+                <h2>Artikel 10 - Intellectueel eigendom</h2>
+                <ol>
+                    <li>Alle intellectuele eigendomsrechten op de door opdrachtnemer ontwikkelde of ter beschikking
+                        gestelde materialen, waaronder maar niet beperkt tot ontwerpen, code, teksten en afbeeldingen,
+                        berusten bij opdrachtnemer of diens licentiegevers.</li>
+                    <li>Na volledige betaling verkrijgt opdrachtgever een gebruiksrecht op de specifiek voor hem
+                        ontwikkelde materialen, voor zover dit voortvloeit uit de aard van de overeenkomst.</li>
+                    <li>Opdrachtgever is niet gerechtigd om zonder voorafgaande schriftelijke toestemming van
+                        opdrachtnemer de materialen te verveelvoudigen, openbaar te maken of aan derden ter beschikking
+                        te stellen, anders dan voor het overeengekomen doel.</li>
+                    <li>Opdrachtnemer behoudt het recht om de bij de uitvoering van de werkzaamheden opgedane kennis en
+                        ervaring te gebruiken voor andere doeleinden, voor zover hierbij geen vertrouwelijke informatie
+                        van opdrachtgever ter kennis van derden wordt gebracht.</li>
+                    <li>Opdrachtnemer heeft het recht om zijn naam te vermelden bij het geleverde werk en om het werk te
+                        gebruiken voor portfolio- en promotiedoeleinden, tenzij schriftelijk anders overeengekomen.</li>
+                </ol>
+            </section>
+
+            <section class="section" id="artikel-11">
+                <h2>Artikel 11 - Geheimhouding</h2>
+                <ol>
+                    <li>Beide partijen zijn verplicht tot geheimhouding van alle vertrouwelijke informatie die zij in
+                        het kader van de overeenkomst van elkaar of uit andere bron hebben verkregen.</li>
+                    <li>Informatie geldt als vertrouwelijk indien dit door de andere partij is medegedeeld of als dit
+                        voortvloeit uit de aard van de informatie.</li>
+                    <li>De geheimhoudingsplicht geldt niet voor informatie die:
+                        <ol>
+                            <li>al openbaar was op het moment van verstrekking;</li>
+                            <li>naderhand openbaar is geworden zonder toedoen van de ontvangende partij;</li>
+                            <li>door de ontvangende partij onafhankelijk is ontwikkeld;</li>
+                            <li>op grond van wet- of regelgeving openbaar gemaakt moet worden.</li>
+                        </ol>
+                    </li>
+                    <li>De geheimhoudingsplicht blijft ook na beëindiging van de overeenkomst van kracht.</li>
+                </ol>
+            </section>
+
+            <section class="section" id="artikel-11">
+                <h2>Artikel 12 - Gegevensbescherming</h2>
+                <ol>
+                    <li>Beide partijen zijn verplicht tot geheimhouding van alle vertrouwelijke informatie die zij in
+                        het kader van de overeenkomst van elkaar of uit andere bron hebben verkregen.</li>
+                    <li>Informatie geldt als vertrouwelijk indien dit door de andere partij is medegedeeld of als dit
+                        voortvloeit uit de aard van de informatie.</li>
+                    <li>De geheimhoudingsplicht geldt niet voor informatie die:
+                        <ol>
+                            <li>al openbaar was op het moment van verstrekking;</li>
+                            <li>naderhand openbaar is geworden zonder toedoen van de ontvangende partij;</li>
+                            <li>door de ontvangende partij onafhankelijk is ontwikkeld;</li>
+                            <li>op grond van wet- of regelgeving openbaar gemaakt moet worden.</li>
+                        </ol>
+                    </li>
+                    <li>De geheimhoudingsplicht blijft ook na beëindiging van de overeenkomst van kracht.</li>
+                </ol>
+            </section>
+
+            <section class="section" id="artikel-12">
+                <h2>Artikel 13 - Aansprakelijkheid</h2>
+                <ol>
+                    <li>Opdrachtnemer is uitsluitend aansprakelijk voor directe schade die het rechtstreekse gevolg is
+                        van een toerekenbare tekortkoming in de nakoming van de overeenkomst.</li>
+                    <li>De aansprakelijkheid van opdrachtnemer is beperkt tot het bedrag dat in het desbetreffende geval
+                        door de aansprakelijkheidsverzekering wordt uitgekeerd, vermeerderd met het bedrag van het eigen
+                        risico. Indien de verzekering geen dekking biedt of niet uitkeert, is de aansprakelijkheid
+                        beperkt tot maximaal het factuurbedrag van de betreffende opdracht, met een maximum van
+                        €5.000,-.</li>
+                        
+                    <li>Opdrachtnemer is niet aansprakelijk voor:
+                        <ol>
+                            <li>indirecte schade, gevolgschade, gederfde winst, gemiste besparingen of schade door
+                                bedrijfsstagnatie;</li>
+                            <li>schade veroorzaakt door handelen of nalaten van opdrachtgever of door opdrachtgever
+                                ingeschakelde derden;</li>
+                            <li>schade als gevolg van onjuiste of onvolledige informatie verstrekt door opdrachtgever;
+                            </li>
+                            <li>schade als gevolg van wijzigingen door derden aan door opdrachtnemer geleverde producten
+                                of diensten;</li>
+                            <li>schade door het niet of niet goed functioneren van door derden geleverde software,
+                                hosting of andere diensten.</li>
+                        </ol>
+                    </li>
+                    <li>Opdrachtgever vrijwaart opdrachtnemer voor alle aanspraken van derden die verband houden met de
+                        door opdrachtnemer geleverde diensten.</li>
+                    <li>Elke aansprakelijkheid vervalt door het verloop van één jaar vanaf het moment dat de opdracht is
+                        voltooid.</li>
+                </ol>
+            </section>
+
+            <section class="section" id="artikel-13">
+                <h2>Artikel 14 - Overmacht</h2>
+                <ol>
+                    <li>Opdrachtnemer is niet gehouden tot het nakomen van enige verplichting indien hij daartoe
+                        gehinderd wordt als gevolg van overmacht.</li>
+                    <li>Onder overmacht wordt onder meer verstaan: ziekte, overheidsmaatregelen, stroomstoringen,
+                        storingen in internetverbindingen, storingen in de communicatie-infrastructuur, stakingen, en
+                        iedere andere situatie waarop opdrachtnemer geen redelijke controle heeft.</li>
+                    <li>Indien de overmachtsituatie langer dan 60 dagen duurt, hebben beide partijen het recht de
+                        overeenkomst schriftelijk te ontbinden zonder verplichting tot schadevergoeding.</li>
+                    <li>Indien opdrachtnemer bij het intreden van de overmacht al gedeeltelijk aan zijn verplichtingen
+                        heeft voldaan, is hij gerechtigd het reeds uitgevoerde deel afzonderlijk te factureren.</li>
+                </ol>
+            </section>
+
+            <section class="section" id="artikel-14">
+                <h2>Artikel 15 - Opzegging en ontbinding</h2>
+                <ol>
+                    <li>Beide partijen kunnen de overeenkomst te allen tijde schriftelijk opzeggen met inachtneming van
+                        een opzegtermijn van één maand, tenzij anders overeengekomen.</li>
+                    <li>Bij tussentijdse opzegging door opdrachtgever heeft opdrachtnemer recht op vergoeding van de tot
+                        dan toe verrichte werkzaamheden en gemaakte kosten.</li>
+                    <li>Opdrachtnemer is bevoegd de overeenkomst met onmiddellijke ingang te ontbinden indien:
+                        <ol>
+                            <li>opdrachtgever in verzuim is met de nakoming van zijn verplichtingen;</li>
+                            <li>opdrachtgever faillissement aanvraagt of failliet wordt verklaard;</li>
+                            <li>opdrachtgever surseance van betaling aanvraagt of dit wordt verleend;</li>
+                            <li>de onderneming van opdrachtgever wordt geliquideerd of beëindigd.</li>
+                        </ol>
+                    </li>
+                    <li>Bij ontbinding worden alle vorderingen van opdrachtnemer op opdrachtgever onmiddellijk
+                        opeisbaar.</li>
+                </ol>
+            </section>
+
+            <section class="section" id="artikel-15">
+                <h2>Artikel 16 - Klachten</h2>
+                <ol>
+                    <li>Klachten over de verrichte werkzaamheden dienen door opdrachtgever binnen 14 dagen na
+                        ontdekking, doch uiterlijk binnen 30 dagen na voltooiing van de betreffende werkzaamheden,
+                        schriftelijk te worden gemeld aan opdrachtnemer.</li>
+                    <li>De klacht dient een zo gedetailleerd mogelijke omschrijving van de tekortkoming te bevatten,
+                        zodat opdrachtnemer in staat is adequaat te reageren.</li>
+                    <li>Opdrachtnemer zal binnen 14 dagen na ontvangst van de klacht reageren.</li>
+                    <li>Indien een klacht gegrond is, zal opdrachtnemer de werkzaamheden alsnog verrichten zoals
+                        overeengekomen, tenzij dit inmiddels voor opdrachtgever aantoonbaar zinloos is geworden.</li>
+                    <li>Het indienen van een klacht schort de betalingsverplichting van opdrachtgever niet op.</li>
+                </ol>
+            </section>
+
+            <section class="section" id="artikel-16">
+                <h2>Artikel 17 - Toepasselijk recht en geschillen</h2>
+                <ol>
+                    <li>Op alle overeenkomsten tussen opdrachtnemer en opdrachtgever is Nederlands recht van toepassing.
+                    </li>
+                    <li>Partijen zullen eerst een beroep op de rechter doen nadat zij zich tot het uiterste hebben
+                        ingespannen een geschil in onderling overleg te beslechten.</li>
+                    <li>Geschillen worden voorgelegd aan de bevoegde rechter in het arrondissement waar opdrachtnemer is
+                        gevestigd, tenzij de wet dwingend anders voorschrijft.</li>
+                    <li>Voor consumenten geldt dat zij binnen één maand nadat opdrachtnemer zich op dit artikel heeft
+                        beroepen, kunnen kiezen voor beslechting van het geschil door de volgens de wet bevoegde
+                        rechter.</li>
+                </ol>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2025 NordicFix (LAAV). Alle rechten voorbehouden.</p>
+            <p><a href="https://nordicfix.nl">Terug naar de website</a></p>
+        </footer>
+    </div>
 </body>
+
 </html>
