@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="nl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +9,9 @@
     <link rel="stylesheet" href="/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
     <style>
         .error-404 {
             min-height: 100vh;
@@ -69,6 +72,7 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Video Background -->
     <div class="video-background">
@@ -83,7 +87,7 @@
             <div class="error-code">404</div>
             <h1 class="error-title">Oeps, er gaat even iets niet goed</h1>
             <p class="error-text">
-                Maar no worries! De pagina die je zoekt bestaat niet (meer) of is verhuisd. 
+                Maar no worries! De pagina die je zoekt bestaat niet (meer) of is verhuisd.
                 Stuur me gerust een berichtje als je niet verder kunt met je vraag, of ga terug naar de homepagina.
             </p>
             <div class="error-actions">
@@ -95,4 +99,5 @@
 
     <script src="/js/main.js"></script>
 </body>
+
 </html>
