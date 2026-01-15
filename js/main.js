@@ -189,11 +189,38 @@ document.addEventListener('DOMContentLoaded', function () {
     // Cookie Banner Logic
     const banner = document.getElementById('cookie-banner');
     const acceptBtn = document.getElementById('accept-cookies');
+    const rejectBtn = document.getElementById('reject-cookies');
+
     if (banner && !localStorage.getItem('cookieConsent')) {
         banner.style.display = 'block';
-        acceptBtn.addEventListener('click', () => {
-            localStorage.setItem('cookieConsent', 'accepted');
-            banner.style.display = 'none';
-        });
+        // Trigger animation na korte delay
+        setTimeout(() => {
+            banner.style.opacity = '1';
+            banner.style.transform = 'translateY(0)';
+        }, 100);
+
+        // Accept button
+        if (acceptBtn) {
+            acceptBtn.addEventListener('click', () => {
+                localStorage.setItem('cookieConsent', 'accepted');
+                banner.style.opacity = '0';
+                banner.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    banner.style.display = 'none';
+                }, 300);
+            });
+        }
+
+        // Reject button
+        if (rejectBtn) {
+            rejectBtn.addEventListener('click', () => {
+                localStorage.setItem('cookieConsent', 'rejected');
+                banner.style.opacity = '0';
+                banner.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    banner.style.display = 'none';
+                }, 300);
+            });
+        }
     }
 });
