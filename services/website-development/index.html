@@ -374,13 +374,83 @@
                 </div>
                 <div class="footer-bottom">
                     <p>&copy; 2025 NordicFix.</p>
+                    <div class="footer-legal">
+                        <a href="/privacy-policy/">Privacy Policy</a>
+                        <span>|</span>
+                        <a href="/algemene-voorwaarden/">Algemene Voorwaarden</a>
+                    </div>
                 </div>
-            </div>
-        </footer>
-        
-        <script src="/js/main.js"></script>
-        </body>
-        
-        </html>
-        
-        </html>
+                </footer>
+                
+                <!-- Cookie Banner -->
+                <div id="cookie-banner">
+                    <div class="cookie-content">
+                        <div class="cookie-text">
+                            <p><strong>🍪 Deze website gebruikt cookies</strong></p>
+                            <p>We gebruiken functionele cookies om de website goed te laten werken en analytische cookies om te
+                                begrijpen hoe bezoekers de site gebruiken. <a href="/privacy-policy/">Lees meer in ons
+                                    privacybeleid</a>.
+                            </p>
+                        </div>
+                        <div class="cookie-buttons">
+                            <button id="accept-cookies" class="cookie-btn cookie-btn-accept">Accepteren</button>
+                            <button id="reject-cookies" class="cookie-btn cookie-btn-reject">Alleen noodzakelijk</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Scripts -->
+                <script src="/js/main.js"></script>
+                <script>
+                    document.addEventListener('DOMContentLoaded', function () {
+                        const toggleBtn = document.getElementById('toggleServices');
+                        const hiddenServices = document.querySelectorAll('.hidden-service');
+                        const toggleText = toggleBtn.querySelector('.toggle-text');
+                        const toggleIcon = toggleBtn.querySelector('.toggle-icon');
+
+                        let isExpanded = false;
+
+                        toggleBtn.addEventListener('click', function () {
+                            isExpanded = !isExpanded;
+
+                            if (isExpanded) {
+                                // TOON ALLE SERVICES met slide effect
+                                hiddenServices.forEach((service, index) => {
+                                    service.style.display = 'block';
+                                    setTimeout(() => {
+                                        service.classList.add('show');
+                                    }, index * 100);
+                                });
+
+                                toggleText.textContent = 'Toon minder';
+                                toggleIcon.textContent = '↑';
+                                toggleBtn.classList.add('active');
+
+                            } else {
+                                // VERBERG SERVICES
+                                hiddenServices.forEach(service => {
+                                    service.classList.remove('show');
+                                });
+
+                                setTimeout(() => {
+                                    hiddenServices.forEach(service => {
+                                        service.style.display = 'none';
+                                    });
+                                }, 300);
+
+                                toggleText.textContent = 'Toon alle diensten';
+                                toggleIcon.textContent = '↓';
+                                toggleBtn.classList.remove('active');
+
+                                // Scroll terug naar begin van sectie
+                                document.querySelector('.extra-services').scrollIntoView({
+                                    behavior: 'smooth',
+                                    block: 'start'
+                                });
+                            }
+                        });
+                    });
+                </script>
+                </body>
+                
+                </html>
