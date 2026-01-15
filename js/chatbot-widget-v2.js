@@ -1,5 +1,5 @@
 /**
- * NordicFix AI Chatbot Widget v2
+ * NordicFix AI Chatbot Widget v4
  * Met markdown link support
  */
 
@@ -19,7 +19,7 @@
             primary: '#f39c5a',
             secondary: '#6eb5d1',
             dark: '#1e3a4f',
-            darker: '#0f1e29',
+            darker: '#172a39ff',
             text: '#ffffff',
             textMuted: 'rgba(255,255,255,0.7)'
         }
@@ -395,27 +395,18 @@
 
         // Converteer markdown links [tekst](url) naar HTML
         formatMessage(text) {
+            // Escape HTML tags om XSS te voorkomen
+            text = text.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
             // Converteer markdown links naar HTML
             let formatted = text.replace(
                 /\[([^\]]+)\]\(([^)]+)\)/g,
                 '<a href="$2" target="_blank" rel="noopener">$1</a>'
             );
-            
-            // Converteer losse URLs naar links
-            formatted = formatted.replace(
-                /(?<!\]|\()(https?:\/\/[^\s<]+)(?!\))/g,
-                '<a href="$1" target="_blank" rel="noopener">$1</a>'
-            );
-            
-            // Converteer dubbele newlines naar paragrafen
-            const paragraphs = formatted.split(/\n\n+/);
-            if (paragraphs.length > 1) {
-                formatted = paragraphs.map(p => `<p>${p.trim()}</p>`).join('');
-            }
-            
+
             // Converteer enkele newlines naar <br>
             formatted = formatted.replace(/\n/g, '<br>');
-            
+
             return formatted;
         }
 
@@ -455,7 +446,7 @@
 
             this.addMessage(text, 'user');
             this.input.value = '';
-            
+
             this.history.push({ role: 'user', content: text });
 
             this.isLoading = true;
@@ -473,7 +464,7 @@
                 });
 
                 const data = await response.json();
-                
+
                 this.hideTyping();
 
                 if (data.error) {
