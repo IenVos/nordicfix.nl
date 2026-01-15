@@ -7,9 +7,8 @@
     'use strict';
 
     const CONFIG = {
-        // BELANGRIJK: Pas deze URL aan naar jouw Cloudflare Worker
         apiEndpoint: 'https://nordicfix-chatbot.annadelapierre.workers.dev',
-        calendlyUrl: 'https://calendly.com/JOUWUSERNAME/kennismaking', // ← PAS AAN!
+        calendlyUrl: 'https://calendly.com/JOUWUSERNAME/kennismaking',
 
         position: 'right',
         greeting: 'Hallo! 👋 Ik ben de digitale assistent van NordicFix. Hoe kan ik je helpen?',
@@ -20,7 +19,7 @@
             primary: '#f39c5a',
             secondary: '#6eb5d1',
             dark: '#1e3a4f',
-            darker: '#172a39ff',
+            darker: '#172a39',
             text: '#ffffff',
             textMuted: 'rgba(255,255,255,0.7)'
         }
@@ -248,7 +247,6 @@
             color: white;
         }
 
-        /* Links in berichten */
         .nf-message a {
             color: var(--nf-primary);
             text-decoration: underline;
@@ -263,7 +261,6 @@
             color: white;
         }
 
-        /* Alinea's in berichten */
         .nf-message p {
             margin: 0 0 8px 0;
         }
@@ -300,7 +297,6 @@
             border-radius: 3px;
         }
 
-        /* Calendly link styling */
         .nf-calendly-link {
             color: var(--nf-primary) !important;
             text-decoration: underline;
@@ -316,7 +312,6 @@
             content: ' 📅';
         }
 
-        /* Calendly Modal */
         #nf-calendly-overlay {
             display: none;
             position: fixed;
@@ -373,12 +368,136 @@
         #nf-calendly-embed {
             width: 100%;
             height: 100%;
+            overflow-y: auto;
         }
 
         @media (max-width: 768px) {
             #nf-calendly-modal {
                 width: 95%;
                 height: 95%;
+            }
+        }
+
+        .nf-booking-form {
+            padding: 40px;
+            max-width: 500px;
+            margin: 0 auto;
+            color: var(--nf-dark);
+        }
+
+        .nf-booking-form h2 {
+            color: var(--nf-dark);
+            margin: 0 0 8px 0;
+            font-size: 28px;
+        }
+
+        .nf-booking-form > p {
+            color: #666;
+            margin: 0 0 30px 0;
+        }
+
+        .nf-form-group {
+            margin-bottom: 20px;
+        }
+
+        .nf-form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .nf-form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--nf-dark);
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .nf-form-group input,
+        .nf-form-group select,
+        .nf-form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 15px;
+            font-family: inherit;
+            transition: border-color 0.2s;
+            box-sizing: border-box;
+        }
+
+        .nf-form-group input:focus,
+        .nf-form-group select:focus,
+        .nf-form-group textarea:focus {
+            outline: none;
+            border-color: var(--nf-secondary);
+        }
+
+        .nf-form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .nf-submit-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, var(--nf-primary), var(--nf-secondary));
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-top: 10px;
+        }
+
+        .nf-submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(243, 156, 90, 0.4);
+        }
+
+        .nf-submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        #nf-booking-success {
+            text-align: center;
+            padding: 60px 40px;
+        }
+
+        .nf-success-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            font-size: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+        }
+
+        #nf-booking-success h3 {
+            color: var(--nf-dark);
+            margin: 0 0 12px 0;
+        }
+
+        #nf-booking-success p {
+            color: #666;
+        }
+
+        @media (max-width: 600px) {
+            .nf-booking-form {
+                padding: 24px;
+            }
+            
+            .nf-form-row {
+                grid-template-columns: 1fr;
             }
         }
     `;
@@ -426,7 +545,65 @@
         <div id="nf-calendly-overlay">
             <div id="nf-calendly-modal">
                 <button id="nf-calendly-close">×</button>
-                <div id="nf-calendly-embed"></div>
+                <div id="nf-calendly-embed">
+                    <div class="nf-booking-form">
+                        <h2>Plan je afspraak</h2>
+                        <p>Vul je gegevens in en we nemen contact met je op.</p>
+                        
+                        <form id="nf-booking-form">
+                            <div class="nf-form-group">
+                                <label>Naam *</label>
+                                <input type="text" name="name" required>
+                            </div>
+                            
+                            <div class="nf-form-group">
+                                <label>Email *</label>
+                                <input type="email" name="email" required>
+                            </div>
+                            
+                            <div class="nf-form-group">
+                                <label>Telefoon *</label>
+                                <input type="tel" name="phone" required>
+                            </div>
+                            
+                            <div class="nf-form-row">
+                                <div class="nf-form-group">
+                                    <label>Gewenste datum *</label>
+                                    <input type="date" name="date" required>
+                                </div>
+                                
+                                <div class="nf-form-group">
+                                    <label>Tijdstip *</label>
+                                    <select name="time" required>
+                                        <option value="">Kies tijd</option>
+                                        <option value="09:00">09:00</option>
+                                        <option value="10:00">10:00</option>
+                                        <option value="11:00">11:00</option>
+                                        <option value="13:00">13:00</option>
+                                        <option value="14:00">14:00</option>
+                                        <option value="15:00">15:00</option>
+                                        <option value="16:00">16:00</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="nf-form-group">
+                                <label>Opmerkingen</label>
+                                <textarea name="notes" rows="3" placeholder="Beschrijf kort je vraag of project..."></textarea>
+                            </div>
+                            
+                            <button type="submit" class="nf-submit-btn">
+                                Afspraak aanvragen
+                            </button>
+                        </form>
+                        
+                        <div id="nf-booking-success" style="display:none;">
+                            <div class="nf-success-icon">✓</div>
+                            <h3>Aanvraag ontvangen!</h3>
+                            <p>We nemen binnen 24 uur contact met je op om de afspraak te bevestigen.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     `;
@@ -472,13 +649,21 @@
                 }
             });
 
-            // Calendly close handlers
             this.calendlyClose.addEventListener('click', () => this.closeCalendly());
             this.calendlyOverlay.addEventListener('click', (e) => {
                 if (e.target === this.calendlyOverlay) this.closeCalendly();
             });
 
-            this.loadCalendlyScript();
+            // Setup booking form
+            const form = document.getElementById('nf-booking-form');
+            if (form) {
+                form.addEventListener('submit', (e) => this.handleBookingSubmit(e));
+                const dateInput = form.querySelector('input[name="date"]');
+                if (dateInput) {
+                    const today = new Date().toISOString().split('T')[0];
+                    dateInput.min = today;
+                }
+            }
 
             console.log('✅ NordicFix Chatbot v4 initialized');
         }
@@ -493,18 +678,16 @@
             }
         }
 
-        // Converteer markdown links [tekst](url) naar HTML
         formatMessage(text) {
             text = text.replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
             let formatted = text.replace(
                 /\[([^\]]+)\]\(([^)]+)\)/g,
                 (match, linkText, url) => {
-                    // Check voor Calendly/afspraak links
-                    if (url.includes('calendly.com') ||
-                        url.includes('cal.com') ||
-                        linkText.toLowerCase().includes('afspraak') ||
-                        linkText.toLowerCase().includes('plan')) {
+                    if (url === 'BOOKING' || url.includes('BOOKING')) {
+                        return `<a href="#" class="nf-calendly-link" data-booking="true">${linkText}</a>`;
+                    }
+                    if (url.includes('calendly.com') || url.includes('cal.com')) {
                         return `<a href="#" class="nf-calendly-link" data-url="${url}">${linkText}</a>`;
                     }
                     return `<a href="${url}" target="_blank" rel="noopener">${linkText}</a>`;
@@ -522,11 +705,10 @@
             this.messages.appendChild(msg);
             this.scrollToBottom();
 
-            // Attach Calendly click handlers
             msg.querySelectorAll('.nf-calendly-link').forEach(link => {
                 link.addEventListener('click', (e) => {
                     e.preventDefault();
-                    this.openCalendly(link.dataset.url);
+                    this.openCalendly();
                 });
             });
         }
@@ -598,38 +780,60 @@
             this.input.focus();
         }
 
-        loadCalendlyScript() {
-            if (!document.querySelector('script[src*="calendly"]')) {
-                const script = document.createElement('script');
-                script.src = 'https://assets.calendly.com/assets/external/widget.js';
-                script.async = true;
-                document.head.appendChild(script);
-            }
-        }
-
-        openCalendly(url) {
-            const calendlyUrl = url || CONFIG.calendlyUrl;
-
-            if (window.Calendly) {
-                this.calendlyEmbed.innerHTML = '';
-                this.calendlyOverlay.classList.add('active');
-
-                window.Calendly.initInlineWidget({
-                    url: calendlyUrl,
-                    parentElement: this.calendlyEmbed,
-                    prefill: {},
-                    utm: {}
-                });
-            } else {
-                window.open(calendlyUrl, '_blank');
-            }
+        openCalendly() {
+            this.calendlyOverlay.classList.add('active');
         }
 
         closeCalendly() {
             this.calendlyOverlay.classList.remove('active');
-            setTimeout(() => {
-                this.calendlyEmbed.innerHTML = '';
-            }, 300);
+        }
+
+        async handleBookingSubmit(e) {
+            e.preventDefault();
+
+            const form = e.target;
+            const submitBtn = form.querySelector('.nf-submit-btn');
+            const formData = new FormData(form);
+
+            const bookingData = {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                phone: formData.get('phone'),
+                date: formData.get('date'),
+                time: formData.get('time'),
+                notes: formData.get('notes')
+            };
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Bezig met verzenden...';
+
+            try {
+                const response = await fetch(CONFIG.apiEndpoint + '/booking', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(bookingData)
+                });
+
+                if (response.ok) {
+                    form.style.display = 'none';
+                    document.getElementById('nf-booking-success').style.display = 'block';
+
+                    setTimeout(() => {
+                        this.closeCalendly();
+                        form.style.display = 'block';
+                        document.getElementById('nf-booking-success').style.display = 'none';
+                        form.reset();
+                    }, 3000);
+                } else {
+                    alert('Er ging iets mis. Probeer het opnieuw of mail naar hello@nordicfix.nl');
+                }
+            } catch (error) {
+                console.error('Booking error:', error);
+                alert('Fout bij verzenden. Neem contact op via hello@nordicfix.nl');
+            }
+
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Afspraak aanvragen';
         }
     }
 
