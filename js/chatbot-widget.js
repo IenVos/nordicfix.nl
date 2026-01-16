@@ -1,6 +1,6 @@
 /**
- * NordicFix AI Chatbot Widget v4
- * Met markdown link support
+ * NordicFix AI Chatbot Widget
+ * Met booking formulier en specifieke beschikbaarheid
  */
 
 (function () {
@@ -8,7 +8,6 @@
 
     const CONFIG = {
         apiEndpoint: 'https://nordicfix-chatbot.annadelapierre.workers.dev',
-        calendlyUrl: 'https://calendly.com/JOUWUSERNAME/kennismaking',
 
         position: 'right',
         greeting: 'Hallo! 👋 Ik ben de digitale assistent van NordicFix. Hoe kan ik je helpen?',
@@ -22,6 +21,17 @@
             darker: '#172a39',
             text: '#ffffff',
             textMuted: 'rgba(255,255,255,0.7)'
+        },
+
+        // Beschikbare dagen: 0=zo, 1=ma, 2=di, 3=wo, 4=do, 5=vr, 6=za
+        availableDays: [2, 3, 4, 5],
+
+        // Tijden per dag
+        availableTimesByDay: {
+            2: ['10:00', '14:00', '16:00'],
+            3: ['10:00', '14:00', '16:00'],
+            4: ['10:00', '13:00'],
+            5: ['10:00', '14:00']
         }
     };
 
@@ -261,14 +271,6 @@
             color: white;
         }
 
-        .nf-message p {
-            margin: 0 0 8px 0;
-        }
-
-        .nf-message p:last-child {
-            margin-bottom: 0;
-        }
-
         @media (max-width: 480px) {
             #nf-chat-window {
                 width: calc(100vw - 32px);
@@ -297,22 +299,22 @@
             border-radius: 3px;
         }
 
-        .nf-calendly-link {
+        .nf-booking-link {
             color: var(--nf-primary) !important;
             text-decoration: underline;
             cursor: pointer;
             font-weight: 600;
         }
 
-        .nf-calendly-link:hover {
+        .nf-booking-link:hover {
             color: #ffb380 !important;
         }
 
-        .nf-calendly-link::after {
+        .nf-booking-link::after {
             content: ' 📅';
         }
 
-        #nf-calendly-overlay {
+        #nf-booking-overlay {
             display: none;
             position: fixed;
             top: 0;
@@ -325,15 +327,14 @@
             align-items: center;
         }
 
-        #nf-calendly-overlay.active {
+        #nf-booking-overlay.active {
             display: flex;
         }
 
-        #nf-calendly-modal {
+        #nf-booking-modal {
             width: 90%;
-            max-width: 900px;
-            height: 90%;
-            max-height: 700px;
+            max-width: 500px;
+            max-height: 90vh;
             background: white;
             border-radius: 16px;
             overflow: hidden;
@@ -341,14 +342,14 @@
             box-shadow: 0 20px 60px rgba(0,0,0,0.5);
         }
 
-        #nf-calendly-close {
+        #nf-booking-close {
             position: absolute;
             top: 16px;
             right: 16px;
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background: var(--nf-dark);
+            background: #1e3a4f;
             color: white;
             border: none;
             cursor: pointer;
@@ -360,44 +361,35 @@
             transition: all 0.2s;
         }
 
-        #nf-calendly-close:hover {
+        #nf-booking-close:hover {
             transform: scale(1.1) rotate(90deg);
             background: #1a252f;
         }
 
-        #nf-calendly-embed {
+        #nf-booking-content {
             width: 100%;
-            height: 100%;
+            max-height: 90vh;
             overflow-y: auto;
-        }
-
-        @media (max-width: 768px) {
-            #nf-calendly-modal {
-                width: 95%;
-                height: 95%;
-            }
         }
 
         .nf-booking-form {
             padding: 40px;
-            max-width: 500px;
-            margin: 0 auto;
-            color: var(--nf-dark);
+            color: #1e3a4f;
         }
 
         .nf-booking-form h2 {
-            color: var(--nf-dark);
+            color: #1e3a4f;
             margin: 0 0 8px 0;
-            font-size: 28px;
+            font-size: 24px;
         }
 
         .nf-booking-form > p {
             color: #666;
-            margin: 0 0 30px 0;
+            margin: 0 0 24px 0;
         }
 
         .nf-form-group {
-            margin-bottom: 20px;
+            margin-bottom: 16px;
         }
 
         .nf-form-row {
@@ -408,8 +400,8 @@
 
         .nf-form-group label {
             display: block;
-            margin-bottom: 8px;
-            color: var(--nf-dark);
+            margin-bottom: 6px;
+            color: #1e3a4f;
             font-weight: 500;
             font-size: 14px;
         }
@@ -431,7 +423,7 @@
         .nf-form-group select:focus,
         .nf-form-group textarea:focus {
             outline: none;
-            border-color: var(--nf-secondary);
+            border-color: #6eb5d1;
         }
 
         .nf-form-group textarea {
@@ -442,7 +434,7 @@
         .nf-submit-btn {
             width: 100%;
             padding: 14px;
-            background: linear-gradient(135deg, var(--nf-primary), var(--nf-secondary));
+            background: linear-gradient(135deg, #f39c5a, #6eb5d1);
             color: white;
             border: none;
             border-radius: 8px;
@@ -483,7 +475,7 @@
         }
 
         #nf-booking-success h3 {
-            color: var(--nf-dark);
+            color: #1e3a4f;
             margin: 0 0 12px 0;
         }
 
@@ -495,7 +487,7 @@
             .nf-booking-form {
                 padding: 24px;
             }
-            
+
             .nf-form-row {
                 grid-template-columns: 1fr;
             }
@@ -542,69 +534,13 @@
                 </div>
             </div>
         </div>
-        <div id="nf-calendly-overlay">
-            <div id="nf-calendly-modal">
-                <button id="nf-calendly-close">×</button>
-                <div id="nf-calendly-embed">
-                    <div class="nf-booking-form">
-                        <h2>Plan je afspraak</h2>
-                        <p>Vul je gegevens in en we nemen contact met je op.</p>
-                        
-                        <form id="nf-booking-form">
-                            <div class="nf-form-group">
-                                <label>Naam *</label>
-                                <input type="text" name="name" required>
-                            </div>
-                            
-                            <div class="nf-form-group">
-                                <label>Email *</label>
-                                <input type="email" name="email" required>
-                            </div>
-                            
-                            <div class="nf-form-group">
-                                <label>Telefoon *</label>
-                                <input type="tel" name="phone" required>
-                            </div>
-                            
-                            <div class="nf-form-row">
-                                <div class="nf-form-group">
-                                    <label>Gewenste datum *</label>
-                                    <input type="date" name="date" required>
-                                </div>
-                                
-                                <div class="nf-form-group">
-                                    <label>Tijdstip *</label>
-                                    <select name="time" required>
-                                        <option value="">Kies tijd</option>
-                                        <option value="09:00">09:00</option>
-                                        <option value="10:00">10:00</option>
-                                        <option value="11:00">11:00</option>
-                                        <option value="13:00">13:00</option>
-                                        <option value="14:00">14:00</option>
-                                        <option value="15:00">15:00</option>
-                                        <option value="16:00">16:00</option>
-                                    </select>
-                                </div>
-                            </div>
-                            
-                            <div class="nf-form-group">
-                                <label>Opmerkingen</label>
-                                <textarea name="notes" rows="3" placeholder="Beschrijf kort je vraag of project..."></textarea>
-                            </div>
-                            
-                            <button type="submit" class="nf-submit-btn">
-                                Afspraak aanvragen
-                            </button>
-                        </form>
-                        
-                        <div id="nf-booking-success" style="display:none;">
-                            <div class="nf-success-icon">✓</div>
-                            <h3>Aanvraag ontvangen!</h3>
-                            <p>We nemen binnen 24 uur contact met je op om de afspraak te bevestigen.</p>
-                        </div>
-                    </div>
-                </div>
+        <div id="nf-booking-overlay">
+            <div id="nf-booking-modal">
+                <button id="nf-booking-close">×</button>
+                <div id="nf-booking-content"></div>
             </div>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+            <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
         </div>
     `;
 
@@ -636,9 +572,9 @@
             this.messages = document.getElementById('nf-chat-messages');
             this.input = document.getElementById('nf-chat-input');
             this.sendBtn = document.getElementById('nf-chat-send');
-            this.calendlyOverlay = document.getElementById('nf-calendly-overlay');
-            this.calendlyClose = document.getElementById('nf-calendly-close');
-            this.calendlyEmbed = document.getElementById('nf-calendly-embed');
+            this.bookingOverlay = document.getElementById('nf-booking-overlay');
+            this.bookingClose = document.getElementById('nf-booking-close');
+            this.bookingContent = document.getElementById('nf-booking-content');
 
             this.toggle.addEventListener('click', () => this.toggleChat());
             this.sendBtn.addEventListener('click', () => this.sendMessage());
@@ -649,23 +585,12 @@
                 }
             });
 
-            this.calendlyClose.addEventListener('click', () => this.closeCalendly());
-            this.calendlyOverlay.addEventListener('click', (e) => {
-                if (e.target === this.calendlyOverlay) this.closeCalendly();
+            this.bookingClose.addEventListener('click', () => this.closeBooking());
+            this.bookingOverlay.addEventListener('click', (e) => {
+                if (e.target === this.bookingOverlay) this.closeBooking();
             });
 
-            // Setup booking form
-            const form = document.getElementById('nf-booking-form');
-            if (form) {
-                form.addEventListener('submit', (e) => this.handleBookingSubmit(e));
-                const dateInput = form.querySelector('input[name="date"]');
-                if (dateInput) {
-                    const today = new Date().toISOString().split('T')[0];
-                    dateInput.min = today;
-                }
-            }
-
-            console.log('✅ NordicFix Chatbot v4 initialized');
+            console.log('✅ NordicFix Chatbot initialized');
         }
 
         toggleChat() {
@@ -684,11 +609,10 @@
             let formatted = text.replace(
                 /\[([^\]]+)\]\(([^)]+)\)/g,
                 (match, linkText, url) => {
-                    if (url === 'BOOKING' || url.includes('BOOKING')) {
-                        return `<a href="#" class="nf-calendly-link" data-booking="true">${linkText}</a>`;
-                    }
-                    if (url.includes('calendly.com') || url.includes('cal.com')) {
-                        return `<a href="#" class="nf-calendly-link" data-url="${url}">${linkText}</a>`;
+                    if (url === 'BOOKING' || url.includes('BOOKING') ||
+                        linkText.toLowerCase().includes('afspraak') ||
+                        linkText.toLowerCase().includes('kennismaking')) {
+                        return `<a href="javascript:void(0);" class="nf-booking-link">${linkText}</a>`;
                     }
                     return `<a href="${url}" target="_blank" rel="noopener">${linkText}</a>`;
                 }
@@ -705,10 +629,10 @@
             this.messages.appendChild(msg);
             this.scrollToBottom();
 
-            msg.querySelectorAll('.nf-calendly-link').forEach(link => {
+            msg.querySelectorAll('.nf-booking-link').forEach(link => {
                 link.addEventListener('click', (e) => {
                     e.preventDefault();
-                    this.openCalendly();
+                    this.openBooking();
                 });
             });
         }
@@ -780,12 +704,131 @@
             this.input.focus();
         }
 
-        openCalendly() {
-            this.calendlyOverlay.classList.add('active');
+        getAvailableDates() {
+            const dates = [];
+            const today = new Date();
+
+            for (let i = 1; i <= 60; i++) {
+                const date = new Date(today);
+                date.setDate(today.getDate() + i);
+
+                if (CONFIG.availableDays.includes(date.getDay())) {
+                    dates.push({
+                        value: date.toISOString().split('T')[0],
+                        day: date.getDay(),
+                        label: date.toLocaleDateString('nl-NL', {
+                            weekday: 'long',
+                            day: 'numeric',
+                            month: 'long'
+                        })
+                    });
+                }
+            }
+            return dates;
         }
 
-        closeCalendly() {
-            this.calendlyOverlay.classList.remove('active');
+        openBooking() {
+            const availableDates = this.getAvailableDates();
+
+            const dateOptions = availableDates.map(d =>
+                `<option value="${d.value}" data-day="${d.day}">${d.label}</option>`
+            ).join('');
+
+            this.bookingContent.innerHTML = `
+                <div class="nf-booking-form">
+                    <h2>Plan een kennismaking</h2>
+                    <p>Kies een datum en tijd die jou uitkomt.</p>
+                    
+                    <form id="nf-booking-form">
+                        <div class="nf-form-row">
+                           <div class="nf-form-group">
+                                <label>Gewenste datum *</label>
+                                <input type="text" name="date" id="nf-date-picker" required readonly placeholder="Klik om datum te kiezen">
+                            </div>
+                            <div class="nf-form-group">
+                                <label>Email *</label>
+                                <input type="email" name="email" required>
+                            </div>
+                        </div>
+                        
+                        <div class="nf-form-group">
+                            <label>Telefoon</label>
+                            <input type="tel" name="phone">
+                        </div>
+                        
+                        <div class="nf-form-row">
+                            <div class="nf-form-group">
+                                <label>Datum *</label>
+                                <select name="date" id="nf-date-select" required>
+                                    <option value="">Kies een datum</option>
+                                    ${dateOptions}
+                                </select>
+                            </div>
+                            
+                            <div class="nf-form-group">
+                                <label>Tijdstip *</label>
+                                <select name="time" id="nf-time-select" required disabled>
+                                    <option value="">Kies eerst een datum</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="nf-form-group">
+                            <label>Waar kan ik je mee helpen?</label>
+                            <textarea name="notes" rows="3" placeholder="Vertel kort waar je hulp bij zoekt..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="nf-submit-btn">
+                            Afspraak aanvragen
+                        </button>
+                    </form>
+                    
+                    <div id="nf-booking-success" style="display:none;">
+                        <div class="nf-success-icon">✓</div>
+                        <h3>Aanvraag ontvangen!</h3>
+                        <p>Ik neem binnen 24 uur contact met je op om de afspraak te bevestigen.</p>
+                    </div>
+                </div>
+            `;
+            // Initialiseer kalender
+            setTimeout(() => {
+                if (typeof flatpickr !== 'undefined') {
+                    const datePicker = this.bookingContent.querySelector('#nf-date-picker');
+                    const timePicker = this.bookingContent.querySelector('#nf-time-select');
+
+                    flatpickr(datePicker, {
+                        minDate: 'today',
+                        dateFormat: 'Y-m-d',
+                        disable: [
+                            function (date) {
+                                return ![2, 3, 4, 5].includes(date.getDay());
+                            }
+                        ],
+                        onChange: function (selectedDates) {
+                            const dayOfWeek = selectedDates[0].getDay();
+                            const times = CONFIG.availableTimesByDay[dayOfWeek] || [];
+                            timePicker.disabled = false;
+                            timePicker.innerHTML = '<option value="">Kies een tijd</option>' +
+                                times.map(time => `<option value="${time}">${time}</option>`).join('');
+                        }
+                    });
+                }
+            }, 100);       
+            
+
+            const form = this.bookingContent.querySelector('#nf-booking-form');
+            if (form) {
+                form.addEventListener('submit', (e) => this.handleBookingSubmit(e));
+            }
+
+            this.bookingOverlay.classList.add('active');
+        }
+
+        closeBooking() {
+            this.bookingOverlay.classList.remove('active');
+            setTimeout(() => {
+                this.bookingContent.innerHTML = '';
+            }, 300);
         }
 
         async handleBookingSubmit(e) {
@@ -798,10 +841,10 @@
             const bookingData = {
                 name: formData.get('name'),
                 email: formData.get('email'),
-                phone: formData.get('phone'),
+                phone: formData.get('phone') || '',
                 date: formData.get('date'),
                 time: formData.get('time'),
-                notes: formData.get('notes')
+                notes: formData.get('notes') || ''
             };
 
             submitBtn.disabled = true;
@@ -819,21 +862,19 @@
                     document.getElementById('nf-booking-success').style.display = 'block';
 
                     setTimeout(() => {
-                        this.closeCalendly();
-                        form.style.display = 'block';
-                        document.getElementById('nf-booking-success').style.display = 'none';
-                        form.reset();
+                        this.closeBooking();
                     }, 3000);
                 } else {
                     alert('Er ging iets mis. Probeer het opnieuw of mail naar hello@nordicfix.nl');
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Afspraak aanvragen';
                 }
             } catch (error) {
                 console.error('Booking error:', error);
                 alert('Fout bij verzenden. Neem contact op via hello@nordicfix.nl');
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Afspraak aanvragen';
             }
-
-            submitBtn.disabled = false;
-            submitBtn.textContent = 'Afspraak aanvragen';
         }
     }
 
