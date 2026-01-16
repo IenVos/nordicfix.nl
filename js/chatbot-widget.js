@@ -1,6 +1,6 @@
 /**
  * NordicFix AI Chatbot Widget
- * Met booking formulier en specifieke beschikbaarheid
+ * Met booking formulier en werkende Flatpickr kalender
  */
 
 (function () {
@@ -8,7 +8,6 @@
 
     const CONFIG = {
         apiEndpoint: 'https://nordicfix-chatbot.annadelapierre.workers.dev',
-
         position: 'right',
         greeting: 'Hallo! 👋 Ik ben de digitale assistent van NordicFix. Hoe kan ik je helpen?',
         placeholder: 'Stel je vraag...',
@@ -23,10 +22,7 @@
             textMuted: 'rgba(255,255,255,0.7)'
         },
 
-        // Beschikbare dagen: 0=zo, 1=ma, 2=di, 3=wo, 4=do, 5=vr, 6=za
         availableDays: [2, 3, 4, 5],
-
-        // Tijden per dag
         availableTimesByDay: {
             2: ['10:00', '14:00', '16:00'],
             3: ['10:00', '14:00', '16:00'],
@@ -322,7 +318,7 @@
             width: 100%;
             height: 100%;
             background: rgba(0, 0, 0, 0.85);
-            z-index: 1000000;
+            z-index: 2000000;
             justify-content: center;
             align-items: center;
         }
@@ -337,7 +333,7 @@
             max-height: 90vh;
             background: white;
             border-radius: 16px;
-            overflow: hidden;
+            overflow: visible;
             position: relative;
             box-shadow: 0 20px 60px rgba(0,0,0,0.5);
         }
@@ -370,6 +366,7 @@
             width: 100%;
             max-height: 90vh;
             overflow-y: auto;
+            overflow-x: visible;
         }
 
         .nf-booking-form {
@@ -390,12 +387,7 @@
 
         .nf-form-group {
             margin-bottom: 16px;
-        }
-
-        .nf-form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
+            position: relative;
         }
 
         .nf-form-group label {
@@ -417,6 +409,7 @@
             font-family: inherit;
             transition: border-color 0.2s;
             box-sizing: border-box;
+            background: white;
         }
 
         .nf-form-group input:focus,
@@ -464,7 +457,7 @@
         .nf-success-icon {
             width: 80px;
             height: 80px;
-            background: linear-gradient(135deg, #10b981, #059669);
+            background: #f39c5a;
             color: white;
             font-size: 48px;
             border-radius: 50%;
@@ -483,13 +476,27 @@
             color: #666;
         }
 
+        /* KRITIEKE FLATPICKR OVERRIDES */
+        .flatpickr-calendar {
+            z-index: 2100000 !important;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+        }
+
+        .flatpickr-calendar.open {
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+
+        /* Zorg dat input klikbaar is */
+        #nf-date-picker {
+            cursor: pointer !important;
+            background-color: white !important;
+        }
+
         @media (max-width: 600px) {
             .nf-booking-form {
                 padding: 24px;
-            }
-
-            .nf-form-row {
-                grid-template-columns: 1fr;
             }
         }
     `;
@@ -547,6 +554,7 @@
             this.isOpen = false;
             this.isLoading = false;
             this.history = [];
+            this.flatpickrInstance = null;
             this.init();
         }
 
@@ -702,119 +710,151 @@
             this.input.focus();
         }
 
-        getAvailableDates() {
-            const dates = [];
-            const today = new Date();
-
-            for (let i = 1; i <= 60; i++) {
-                const date = new Date(today);
-                date.setDate(today.getDate() + i);
-
-                if (CONFIG.availableDays.includes(date.getDay())) {
-                    dates.push({
-                        value: date.toISOString().split('T')[0],
-                        day: date.getDay(),
-                        label: date.toLocaleDateString('nl-NL', {
-                            weekday: 'long',
-                            day: 'numeric',
-                            month: 'long'
-                        })
-                    });
-                }
+        openBooking() {
+            // Destroy vorige instance als die bestaat
+            if (this.flatpickrInstance) {
+                this.flatpickrInstance.destroy();
+                this.flatpickrInstance = null;
             }
-            return dates;
+
+            this.bookingContent.innerHTML = `
+                <div class="nf-booking-form">
+                    <h2>Plan een kennismaking</h2>
+                    <p>Kies een datum en tijd die jou uitkomt.</p>
+                    
+                    <form id="nf-booking-form">
+                        <div class="nf-form-group">
+                            <label>Naam *</label>
+                            <input type="text" name="name" required>
+                        </div>
+                        
+                        <div class="nf-form-group">
+                            <label>Email *</label>
+                            <input type="email" name="email" required>
+                        </div>
+                        
+                        <div class="nf-form-group">
+                            <label>Telefoon</label>
+                            <input type="tel" name="phone">
+                        </div>
+                        
+                        <div class="nf-form-group">
+                            <label>Datum *</label>
+                            <input type="text" name="date" id="nf-date-picker" required placeholder="Klik om datum te kiezen">
+                        </div>
+                        
+                        <div class="nf-form-group">
+                            <label>Tijdstip *</label>
+                            <select name="time" id="nf-time-select" required disabled>
+                                <option value="">Kies eerst een datum</option>
+                            </select>
+                        </div>
+                        
+                        <div class="nf-form-group">
+                            <label>Waar kan ik je mee helpen?</label>
+                            <textarea name="notes" rows="3" placeholder="Vertel kort waar je hulp bij zoekt..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="nf-submit-btn">
+                            Afspraak aanvragen
+                        </button>
+                    </form>
+                    
+                    <div id="nf-booking-success" style="display:none;">
+                        <div class="nf-success-icon">✓</div>
+                        <h3>Dankjewel voor je aanvraag</h3>
+                        <p>Ik neem binnen 24 uur contact met je op om de afspraak te bevestigen.</p>
+                    </div>
+                </div>
+            `;
+
+            // Toon overlay
+            this.bookingOverlay.classList.add('active');
+
+            // Wacht tot DOM volledig gerenderd is
+            requestAnimationFrame(() => {
+                setTimeout(() => {
+                    this.initFlatpickr();
+                }, 100);
+            });
+
+            // Form submit handler
+            const form = document.getElementById('nf-booking-form');
+            if (form) {
+                form.addEventListener('submit', (e) => this.handleBookingSubmit(e));
+            }
         }
 
-        openBooking() {
-            this.bookingContent.innerHTML = `
-        <div class="nf-booking-form">
-            <h2>Plan een kennismaking</h2>
-            <p>Kies een datum en tijd die jou uitkomt.</p>
-            
-            <form id="nf-booking-form">
-                <div class="nf-form-group">
-                    <label>Naam *</label>
-                    <input type="text" name="name" required>
-                </div>
-                
-                <div class="nf-form-group">
-                    <label>Email *</label>
-                    <input type="email" name="email" required>
-                </div>
-                
-                <div class="nf-form-group">
-                    <label>Telefoon</label>
-                    <input type="tel" name="phone">
-                </div>
-                
-                <div class="nf-form-group">
-                    <label>Datum *</label>
-                    <input type="text" name="date" id="nf-date-picker" required readonly placeholder="Klik om datum te kiezen">
-                </div>
-                
-                <div class="nf-form-group">
-                    <label>Tijdstip *</label>
-                    <select name="time" id="nf-time-select" required disabled>
-                        <option value="">Kies eerst een datum</option>
-                    </select>
-                </div>
-                
-                <div class="nf-form-group">
-                    <label>Waar kan ik je mee helpen?</label>
-                    <textarea name="notes" rows="3" placeholder="Vertel kort waar je hulp bij zoekt..."></textarea>
-                </div>
-                
-                <button type="submit" class="nf-submit-btn">
-                    Afspraak aanvragen
-                </button>
-            </form>
-            
-            <div id="nf-booking-success" style="display:none;">
-                <div class="nf-success-icon">✓</div>
-                <h3>Aanvraag ontvangen!</h3>
-                <p>Ik neem binnen 24 uur contact met je op om de afspraak te bevestigen.</p>
-            </div>
-        </div>
-    `;
+        initFlatpickr() {
+            const datePicker = document.getElementById('nf-date-picker');
+            const timePicker = document.getElementById('nf-time-select');
 
-            setTimeout(() => {
-                if (typeof flatpickr !== 'undefined') {
-                    const datePicker = this.bookingContent.querySelector('#nf-date-picker');
-                    const timePicker = this.bookingContent.querySelector('#nf-time-select');
+            if (!datePicker) {
+                console.error('❌ Date picker element niet gevonden');
+                return;
+            }
 
-                    flatpickr(datePicker, {
-                        minDate: 'today',
-                        dateFormat: 'd-m-Y',
-                        disable: [
-                            function (date) {
-                                return ![2, 3, 4, 5].includes(date.getDay());
-                            }
-                        ],
-                        onChange: function (selectedDates) {
+            if (typeof flatpickr === 'undefined') {
+                console.error('❌ Flatpickr library niet geladen');
+                // Fallback: maak het een gewone date input
+                datePicker.type = 'date';
+                datePicker.removeAttribute('readonly');
+                datePicker.addEventListener('change', () => {
+                    const date = new Date(datePicker.value);
+                    const dayOfWeek = date.getDay();
+                    const times = CONFIG.availableTimesByDay[dayOfWeek] || [];
+                    if (times.length > 0) {
+                        timePicker.disabled = false;
+                        timePicker.innerHTML = '<option value="">Kies een tijd</option>' +
+                            times.map(time => `<option value="${time}">${time}</option>`).join('');
+                    }
+                });
+                return;
+            }
+
+            try {
+                this.flatpickrInstance = flatpickr(datePicker, {
+                    minDate: 'today',
+                    dateFormat: 'd-m-Y',
+                    disableMobile: true,
+                    static: true,
+                    appendTo: document.getElementById('nf-booking-modal'),
+                    disable: [
+                        (date) => !CONFIG.availableDays.includes(date.getDay())
+                    ],
+                    onChange: (selectedDates) => {
+                        if (selectedDates.length > 0) {
                             const dayOfWeek = selectedDates[0].getDay();
                             const times = CONFIG.availableTimesByDay[dayOfWeek] || [];
                             timePicker.disabled = false;
                             timePicker.innerHTML = '<option value="">Kies een tijd</option>' +
                                 times.map(time => `<option value="${time}">${time}</option>`).join('');
                         }
-                    });
-                }
-            }, 500);
+                    }
+                });
 
-            const form = this.bookingContent.querySelector('#nf-booking-form');
-            if (form) {
-                form.addEventListener('submit', (e) => this.handleBookingSubmit(e));
+                console.log('✅ Flatpickr initialized');
+
+            } catch (error) {
+                console.error('❌ Flatpickr init error:', error);
             }
 
-            this.bookingOverlay.classList.add('active');
-        }       
+            ccloseBooking()
+                // Destroy flatpickr instance als die bestaat
+                if (this.flatpickrInstance) {
+                    try {
+                        this.flatpickrInstance.destroy();
+                    } catch (e) {
+                        // Ignore errors
+                    }
+                    this.flatpickrInstance = null;
+                }
 
-        closeBooking() {
-            this.bookingOverlay.classList.remove('active');
-            setTimeout(() => {
-                this.bookingContent.innerHTML = '';
-            }, 300);
-        }
+                this.bookingOverlay.classList.remove('active');
+                setTimeout(() => {
+                    this.bookingContent.innerHTML = '';
+                }, 300);
+            }
 
         async handleBookingSubmit(e) {
             e.preventDefault();
@@ -844,11 +884,20 @@
 
                 if (response.ok) {
                     form.style.display = 'none';
+
+                    // Verander de titel
+                    const formContainer = document.querySelector('.nf-booking-form');
+                    const title = formContainer.querySelector('h2');
+                    const subtitle = formContainer.querySelector('p');
+                    if (title) title.textContent = '';
+                    if (subtitle) subtitle.style.display = 'none';
+
                     document.getElementById('nf-booking-success').style.display = 'block';
 
                     setTimeout(() => {
                         this.closeBooking();
                     }, 3000);
+
                 } else {
                     alert('Er ging iets mis. Probeer het opnieuw of mail naar hello@nordicfix.nl');
                     submitBtn.disabled = false;
