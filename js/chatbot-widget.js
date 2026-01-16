@@ -539,8 +539,6 @@
                 <button id="nf-booking-close">×</button>
                 <div id="nf-booking-content"></div>
             </div>
-            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-            <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
         </div>
     `;
 
@@ -728,69 +726,57 @@
         }
 
         openBooking() {
-            const availableDates = this.getAvailableDates();
-
-            const dateOptions = availableDates.map(d =>
-                `<option value="${d.value}" data-day="${d.day}">${d.label}</option>`
-            ).join('');
-
             this.bookingContent.innerHTML = `
-                <div class="nf-booking-form">
-                    <h2>Plan een kennismaking</h2>
-                    <p>Kies een datum en tijd die jou uitkomt.</p>
-                    
-                    <form id="nf-booking-form">
-                        <div class="nf-form-row">
-                           <div class="nf-form-group">
-                                <label>Gewenste datum *</label>
-                                <input type="text" name="date" id="nf-date-picker" required readonly placeholder="Klik om datum te kiezen">
-                            </div>
-                            <div class="nf-form-group">
-                                <label>Email *</label>
-                                <input type="email" name="email" required>
-                            </div>
-                        </div>
-                        
-                        <div class="nf-form-group">
-                            <label>Telefoon</label>
-                            <input type="tel" name="phone">
-                        </div>
-                        
-                        <div class="nf-form-row">
-                            <div class="nf-form-group">
-                                <label>Datum *</label>
-                                <select name="date" id="nf-date-select" required>
-                                    <option value="">Kies een datum</option>
-                                    ${dateOptions}
-                                </select>
-                            </div>
-                            
-                            <div class="nf-form-group">
-                                <label>Tijdstip *</label>
-                                <select name="time" id="nf-time-select" required disabled>
-                                    <option value="">Kies eerst een datum</option>
-                                </select>
-                            </div>
-                        </div>
-                        
-                        <div class="nf-form-group">
-                            <label>Waar kan ik je mee helpen?</label>
-                            <textarea name="notes" rows="3" placeholder="Vertel kort waar je hulp bij zoekt..."></textarea>
-                        </div>
-                        
-                        <button type="submit" class="nf-submit-btn">
-                            Afspraak aanvragen
-                        </button>
-                    </form>
-                    
-                    <div id="nf-booking-success" style="display:none;">
-                        <div class="nf-success-icon">✓</div>
-                        <h3>Aanvraag ontvangen!</h3>
-                        <p>Ik neem binnen 24 uur contact met je op om de afspraak te bevestigen.</p>
-                    </div>
+        <div class="nf-booking-form">
+            <h2>Plan een kennismaking</h2>
+            <p>Kies een datum en tijd die jou uitkomt.</p>
+            
+            <form id="nf-booking-form">
+                <div class="nf-form-group">
+                    <label>Naam *</label>
+                    <input type="text" name="name" required>
                 </div>
-            `;
-            // Initialiseer kalender
+                
+                <div class="nf-form-group">
+                    <label>Email *</label>
+                    <input type="email" name="email" required>
+                </div>
+                
+                <div class="nf-form-group">
+                    <label>Telefoon</label>
+                    <input type="tel" name="phone">
+                </div>
+                
+                <div class="nf-form-group">
+                    <label>Datum *</label>
+                    <input type="text" name="date" id="nf-date-picker" required readonly placeholder="Klik om datum te kiezen">
+                </div>
+                
+                <div class="nf-form-group">
+                    <label>Tijdstip *</label>
+                    <select name="time" id="nf-time-select" required disabled>
+                        <option value="">Kies eerst een datum</option>
+                    </select>
+                </div>
+                
+                <div class="nf-form-group">
+                    <label>Waar kan ik je mee helpen?</label>
+                    <textarea name="notes" rows="3" placeholder="Vertel kort waar je hulp bij zoekt..."></textarea>
+                </div>
+                
+                <button type="submit" class="nf-submit-btn">
+                    Afspraak aanvragen
+                </button>
+            </form>
+            
+            <div id="nf-booking-success" style="display:none;">
+                <div class="nf-success-icon">✓</div>
+                <h3>Aanvraag ontvangen!</h3>
+                <p>Ik neem binnen 24 uur contact met je op om de afspraak te bevestigen.</p>
+            </div>
+        </div>
+    `;
+
             setTimeout(() => {
                 if (typeof flatpickr !== 'undefined') {
                     const datePicker = this.bookingContent.querySelector('#nf-date-picker');
@@ -798,7 +784,7 @@
 
                     flatpickr(datePicker, {
                         minDate: 'today',
-                        dateFormat: 'Y-m-d',
+                        dateFormat: 'd-m-Y',
                         disable: [
                             function (date) {
                                 return ![2, 3, 4, 5].includes(date.getDay());
@@ -813,8 +799,7 @@
                         }
                     });
                 }
-            }, 100);       
-            
+            }, 500);
 
             const form = this.bookingContent.querySelector('#nf-booking-form');
             if (form) {
@@ -822,7 +807,7 @@
             }
 
             this.bookingOverlay.classList.add('active');
-        }
+        }       
 
         closeBooking() {
             this.bookingOverlay.classList.remove('active');
