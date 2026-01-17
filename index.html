@@ -378,8 +378,7 @@
                 <div class="footer-column highlight">
                     <h4>Effectief sparren</h4>
                     <ul>
-                        <li><a href="/services/effectief-sparren/">Klaar voor een praktische, heldere sparringpartner?</a>
-                        </li>
+                        <li><a href="/services/effectief-sparren/">Klaar voor een praktische, heldere sparringpartner?</a></li>
                     </ul>
                 </div>
             </div>
@@ -405,9 +404,7 @@
         <div class="cookie-content">
             <div class="cookie-text">
                 <p><strong>🍪 Deze website gebruikt cookies</strong></p>
-                <p>We gebruiken functionele cookies om de website goed te laten werken en analytische cookies om te
-                    begrijpen hoe bezoekers de site gebruiken. <a href="privacy-policy">Lees meer in ons privacybeleid</a>.
-                </p>
+                <p>We gebruiken functionele cookies om de website goed te laten werken en analytische cookies om te begrijpen hoe bezoekers de site gebruiken. <a href="privacy-policy">Lees meer in ons privacybeleid</a>.</p>
             </div>
             <div class="cookie-buttons">
                 <button id="accept-cookies" class="cookie-btn cookie-btn-accept">Accepteren</button>
@@ -419,8 +416,12 @@
     <!-- Chatbot container -->
     <div id="nordicfix-chatbot"></div>
     
-    <!-- Review Modal Script -->
+    <!-- Flatpickr CSS (Boven de scripts) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+    <!-- JAVASCRIPT LOGICA -->
     <script>
+        // Review Modal functies
         function openReview(imgSrc) {
             const modal = document.getElementById('reviewModal');
             const modalImg = document.getElementById('fullReviewImg');
@@ -431,7 +432,10 @@
         }
 
         function closeReview() {
-            document.getElementById('reviewModal').style.display = "none";
+            const modal = document.getElementById('reviewModal');
+            if (modal) {
+                modal.style.display = "none";
+            }
         }
 
         document.addEventListener('keydown', function (event) {
@@ -441,43 +445,14 @@
         });
     </script>
     
-    <!-- Flatpickr CSS & JS (voor booking kalender) -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <!-- Externe Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/nl.js"></script>
     
-    <!-- Site Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="/js/main.js"></script>
-    <script src="/js/cookies.js"></script>
-    <script src="/js/chatbot-widget.js"></script>
-    </body>
-    
-    </html>
-        
-        <!-- JAVASCRIPT -->
-        <script>
-            function openReview(imgSrc) {
-                const modal = document.getElementById('reviewModal');
-                const modalImg = document.getElementById('fullReviewImg');
-                if (modal && modalImg) {
-                    modal.style.display = "flex";
-                    modalImg.src = imgSrc;
-                }
-            }
+    <!-- Eigen Site Scripts (Paden gecontroleerd) -->
+    <script src="js/main.js"></script>
+    <script src="js/cookies.js"></script>
+    <script src="js/chatbot-widget.js"></script>
 
-            function closeReview() {
-                document.getElementById('reviewModal').style.display = "none";
-            }
-
-            document.addEventListener('keydown', function (event) {
-                if (event.key === "Escape") {
-                    closeReview();
-                }
-            });
-        </script>
-        <script src="/js/main.js"></script>
-        <script src="js/cookies.js"></script>
-        </body>
-        
-        </html>
+</body>
+</html>
