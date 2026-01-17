@@ -73,6 +73,7 @@ Aurora Background
     transform: translate(-50%, -50%);
     object-fit: cover;
     pointer-events: none;
+    user-select: none;
 }
 
 .video-background video::-webkit-media-controls,
